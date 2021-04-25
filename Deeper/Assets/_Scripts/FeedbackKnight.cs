@@ -29,7 +29,9 @@ public class FeedbackKnight : MonoBehaviour
 
     private void Update()
     {
-        RopeAnim();
+        if (finalHinge != null && knightPod != null)
+            RopeAnim();
+
         if (!_lock)
             PlayAnimations();
     }

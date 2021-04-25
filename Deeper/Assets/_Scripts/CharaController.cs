@@ -20,12 +20,16 @@ public class CharaController : MonoBehaviour
     bool _knightStun;
 
     [Header("Animation")]
-    public FeedbackKnight FeedbackKnight;
+    public FeedbackKnight KnightFeedback;
+    public FeedbackWizard WizardFeedback;
 
-    [Header("Movement")]
-    [Range(0, 1)]public float Speed;
-    [Range(0,.5f)]public float AccelerationWizard;
-    [Range(0,.5f)]public float DecelerationWizard;
+    [Header("Movement Wizard")]
+    [Range(0, 1)] public float SpeedWizard;
+    [Range(0, .5f)] public float AccelerationWizard;
+    [Range(0, .5f)] public float DecelerationWizard;
+
+    [Header("Movement Knight")]
+    [Range(0, 1)]public float SpeedKnight;
     [Range(0,.5f)]public float AccelerationKnight;
     [Range(0, .5f)] public float DecelerationKnight;
 
@@ -136,7 +140,7 @@ public class CharaController : MonoBehaviour
             {
                 _throwing = false;
                 ThrowBomb();
-                StartCoroutine(FeedbackKnight.LockAnim(FeedbackKnight.AnimState.Throw,.2f));
+                StartCoroutine(KnightFeedback.LockAnim(FeedbackKnight.AnimState.Throw,.2f));
             }
         }
     }
@@ -161,7 +165,7 @@ public class CharaController : MonoBehaviour
     {
         Vector2 pointerPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        _aimDir = pointerPos - (Vector2)KnightSpawnPotion.position;
+        _aimDir = pointerPos - (Vector2)_knight.position;
 
         if (_aimDir.x > 0)
             KnightPivot.localScale = new Vector3(-.5f, .5f, 1);
@@ -169,7 +173,7 @@ public class CharaController : MonoBehaviour
             KnightPivot.localScale = new Vector3(.5f, .5f, 1);
 
         //animAim
-        FeedbackKnight.State = FeedbackKnight.AnimState.Aim;
+        KnightFeedback.State = FeedbackKnight.AnimState.Aim;
     }
 
     void ThrowBomb()
@@ -198,10 +202,10 @@ public class CharaController : MonoBehaviour
         float xInput = 0;
         float yInput = 0;
 
-        xInput = Input.GetAxisRaw("Horizontal") * Speed;
+        xInput = Input.GetAxisRaw("Horizontal") * SpeedWizard;
 
         if (!_throwing)
-        yInput = Input.GetAxisRaw("Vertical") * Speed;
+        yInput = Input.GetAxisRaw("Vertical") * SpeedKnight;
 
         if (xInput != 0)
             _xValue = Mathf.Lerp(_xValue, xInput, AccelerationWizard);
@@ -217,12 +221,6 @@ public class CharaController : MonoBehaviour
             _xValue = 0;
         if (_yValue < .01f && _yValue>-.1f && yInput==0)
             _yValue = 0;
-
-        //Animations
-        if (_yValue != 0)
-            FeedbackKnight.State = FeedbackKnight.AnimState.Moving;
-        else
-            FeedbackKnight.State = FeedbackKnight.AnimState.Idle;
 
 
         float x = PlayersPos.x + _xValue;
@@ -251,6 +249,17 @@ public class CharaController : MonoBehaviour
         PlayersPos.x = x;
         PlayersPos.y = y;
 
+        //Animations
+        if (_xValue != 0)
+            WizardFeedback.State = FeedbackWizard.AnimState.Moving;
+        else
+            WizardFeedback.State = FeedbackWizard.AnimState.Idle;
+
+        if (_yValue != 0)
+            KnightFeedback.State = FeedbackKnight.AnimState.Moving;
+        else
+            KnightFeedback.State = FeedbackKnight.AnimState.Idle;
+
         ApplyMovement();
 
         _bombInertia = Mathf.Lerp(_bombInertia, 0, DecelerationWizard);
@@ -258,7 +267,7 @@ public class CharaController : MonoBehaviour
             _bombInertia = 0;        
     }
 
-    void ApplyMovement()
+    public void ApplyMovement()
     {
         _knight.position = PlayersPos + new Vector2(0, KnightOffsetY);
         _wizard.position = new Vector2(-PlayersPos.x, WizardPosY);
