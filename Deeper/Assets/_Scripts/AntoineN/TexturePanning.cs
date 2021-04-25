@@ -7,7 +7,7 @@ public class TexturePanning : MonoBehaviour
 {
     SpriteRenderer spr;
     [SerializeField] float speed = 0.5f;
-    bool active;
+    public bool active;
 
     public float Speed
     {
