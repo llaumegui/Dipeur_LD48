@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaMask: 3
+    - _AlphaMask: 5
     - _Cutoff: 0.5
     - _Float0: 3.26
     - _Metallic: 1
@@ -53,3 +53,4 @@ Material:
     m_Colors:
     - _GlowColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor1: {r: 0.0009765625, g: 0.0009765625, b: 0.0009765625, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
