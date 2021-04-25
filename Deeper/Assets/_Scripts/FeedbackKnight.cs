@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FeedbackKnight : MonoBehaviour
 {
-
     public enum AnimState
     {
         Idle,
@@ -16,21 +15,48 @@ public class FeedbackKnight : MonoBehaviour
 
     public AnimState State;
     bool _lock;
+    float xInput;
+    float yInput;
 
     [Header("Animation")]
     public AnimationManager2D AnimManager;
     int _antispam;
 
+    [Header("Chains")]
+    [SerializeField] TexturePanning[] chains;
+    [SerializeField] Transform finalHinge;
+    [SerializeField] Transform knightPod;
+
     private void Update()
     {
+        RopeAnim();
         if (!_lock)
             PlayAnimations();
     }
 
+    void RopeAnim()
+    {
+        knightPod.position = finalHinge.position;
+        Quaternion newRot = finalHinge.rotation;
+        newRot.eulerAngles += Vector3.forward * 90;
+        knightPod.rotation = newRot;
+
+        if (yInput > 0)
+        {
+            for (int i = 0; i < chains.Length; i++)
+                chains[i].Speed *= i % 2 == 0 ? 1 : -1;
+        }
+        if (yInput < 0)
+        {
+            for (int i = 0; i < chains.Length; i++)
+                chains[i].Speed *= i % 2 != 0 ? 1 : -1;
+        }
+    }
+
     void PlayAnimations()
     {
-        float xInput = Input.GetAxisRaw("Horizontal");
-        float yInput = Input.GetAxisRaw("Vertical");
+        xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
 
         //Stuned
         if (State != AnimState.Stun)

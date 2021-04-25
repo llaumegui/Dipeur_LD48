@@ -6,9 +6,18 @@ using UnityEngine.UI;
 public class TexturePanning : MonoBehaviour
 {
     SpriteRenderer spr;
-    [SerializeField] Vector2 direction;
+    [SerializeField] float speed = 0.5f;
+    bool active;
 
-    public Vector2 Direction { get => direction; set => direction = value; }
+    public float Speed
+    {
+        get => speed;
+        set
+        {
+            active = true;
+            speed = value;
+        }
+    }
 
     private void Awake()
     {
@@ -17,6 +26,12 @@ public class TexturePanning : MonoBehaviour
 
     private void Update()
     {
-        spr.material.mainTextureOffset = Direction * (Time.unscaledTime % 1);
+        if (active)
+            spr.material.mainTextureOffset = Vector2.up * Speed * (Time.unscaledTime % 1);
+    }
+
+    private void FixedUpdate()
+    {
+        active = false;
     }
 }
