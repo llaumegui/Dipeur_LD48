@@ -15,6 +15,8 @@ public class GameMaster : MonoBehaviour
     }
     #endregion
 
+    public bool InfiniteMode;
+
     [Header("Values")]
     public float DistanceTick;
 
@@ -26,6 +28,14 @@ public class GameMaster : MonoBehaviour
     float _health;
     float _timeDistance;
 
+    [Header("Level Design")]
+    LevelGenerator _ld;
+    public Vector2 MinMaxTimeSpawnLevel;
+    float _timeSpawnLevel;
+    float _timeLevel;
+    public SpriteRenderer Panning;
+    Transform _panningTransform;
+
     [Header("UI")]
     public UIKnightPotions KnightPotionsScript;
     public TextMeshProUGUI ScoreText;
@@ -33,6 +43,11 @@ public class GameMaster : MonoBehaviour
 
     private void Awake()
     {
+        _ld = GetComponent<LevelGenerator>();
+        _timeSpawnLevel = MinMaxTimeSpawnLevel.y;
+        _panningTransform = _ld.PanningTransform;
+        Panning.size += Vector2.up * 1000;
+
         Health = MaxHealth;
 
         if (_i != null && _i != this)
@@ -48,14 +63,25 @@ public class GameMaster : MonoBehaviour
 
     void Update()
     {
-        _timeDistance += Time.deltaTime;
-        if(_timeDistance>=DistanceTick)
+        if(Health>0)
         {
-            _timeDistance = 0;
-            Score++;
+            _timeDistance += Time.deltaTime;
+            if (_timeDistance >= DistanceTick)
+            {
+                _timeDistance = 0;
+                Score++;
+            }
+            _timeLevel += Time.deltaTime;
+            if (_timeLevel >= _timeSpawnLevel)
+            {
+                _timeLevel = 0;
+                _ld.TriggerSpawn();
+            }
+
+            //Panning
+            _panningTransform.position += Vector3.up * (Time.deltaTime / DistanceTick);
+            Panning.size -= new Vector2(0, Time.deltaTime / DistanceTick);
         }
-
-
 
         if(_score!=Score)
         {

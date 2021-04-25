@@ -58,14 +58,13 @@ public abstract class Ennemy : MonoBehaviour
             if (_target == null)
             {
                 _target = Target.GetComponent<Transform>();
-                _defaultPos = _target.position;
             }
 
             _timeMove += Time.deltaTime / TimeMove;
 
             float value = Mathf.Cos(_timeMove);
             Debug.Log(value);
-            _target.position = _defaultPos + (MaxDirs * value);
+            _target.position = (Vector2)transform.position+ (MaxDirs * value);
         }
     }
 
