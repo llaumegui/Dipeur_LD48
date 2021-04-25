@@ -830,12 +830,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InfiniteMode: 0
-  DistanceTick: 0.2
+  DistanceTick: 0.25
   Score: 0
   Health: 0
   MaxHealth: 40
   MinMaxTimeSpawnLevel: {x: 0, y: 3}
   Panning: {fileID: 979575761}
+  PanningTick: 0.75
   KnightPotionsScript: {fileID: 1666679031}
   ScoreText: {fileID: 1334432230}
   HealthFillBar: {fileID: 415689577}
@@ -1471,6 +1472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 979575760}
   - component: {fileID: 979575761}
+  - component: {fileID: 979575762}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -1510,7 +1512,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2b430bd52bd0ede4f9a24489e76fa6e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1542,6 +1544,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &979575762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979575759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e38391f67ab85d4ba4a1d207aac60eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: -0.05
+  active: 1
 --- !u!1 &1334432228
 GameObject:
   m_ObjectHideFlags: 0

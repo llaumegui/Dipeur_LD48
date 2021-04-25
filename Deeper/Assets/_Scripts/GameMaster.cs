@@ -34,6 +34,7 @@ public class GameMaster : MonoBehaviour
     float _timeSpawnLevel;
     float _timeLevel;
     public SpriteRenderer Panning;
+    [Range(0,1)]public float PanningTick;
     Transform _panningTransform;
 
     [Header("UI")]
@@ -46,7 +47,6 @@ public class GameMaster : MonoBehaviour
         _ld = GetComponent<LevelGenerator>();
         _timeSpawnLevel = MinMaxTimeSpawnLevel.y;
         _panningTransform = _ld.PanningTransform;
-        Panning.size += Vector2.up * 1000;
 
         Health = MaxHealth;
 
@@ -79,8 +79,7 @@ public class GameMaster : MonoBehaviour
             }
 
             //Panning
-            _panningTransform.position += Vector3.up * (Time.deltaTime / DistanceTick);
-            Panning.size -= new Vector2(0, Time.deltaTime / DistanceTick);
+            _panningTransform.position += Vector3.up * (Time.deltaTime / PanningTick);
         }
 
         if(_score!=Score)

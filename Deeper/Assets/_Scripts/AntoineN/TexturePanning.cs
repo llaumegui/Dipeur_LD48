@@ -27,11 +27,11 @@ public class TexturePanning : MonoBehaviour
     private void Update()
     {
         if (active)
-            spr.material.mainTextureOffset = Vector2.up * Speed * (Time.unscaledTime % 1);
+            spr.material.mainTextureOffset = Vector2.up * Speed * (Time.unscaledTime);
     }
 
     private void FixedUpdate()
     {
-        active = false;
+        //active = false;
     }
 }
