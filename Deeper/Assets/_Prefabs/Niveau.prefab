@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 6867701510187835374}
   - component: {fileID: 6867701510187835375}
   - component: {fileID: 6867701510187835373}
+  - component: {fileID: 1838217891947320632}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -122,9 +123,8 @@ MonoBehaviour:
   WizardPosY: 3.5
   KnightOffsetY: -1
   KnightPivot: {fileID: 6867701510972684616}
-  AnimKnight: {fileID: 6867701510187835373}
-  AnimWizard: {fileID: 0}
-  Speed: 0.25
+  FeedbackKnight: {fileID: 0}
+  Speed: 0.1
   AccelerationWizard: 0.05
   DecelerationWizard: 0.2
   AccelerationKnight: 0.05
@@ -197,6 +197,20 @@ MonoBehaviour:
     Loop: 0
     Reverse: 0
     DebugActivate: 0
+--- !u!114 &1838217891947320632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867701510187835360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b789756810a66479819610ec3770aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  State: 0
+  AnimManager: {fileID: 0}
 --- !u!1 &6867701510304340872
 GameObject:
   m_ObjectHideFlags: 0

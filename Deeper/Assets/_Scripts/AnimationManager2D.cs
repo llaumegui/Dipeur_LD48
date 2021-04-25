@@ -36,7 +36,7 @@ public class AnimationManager2D : MonoBehaviour
 	{
 		Idle,
 		Aim,
-		Manivelle,
+		Move,
 		Stun,
 		Lancer,
 		Debug,

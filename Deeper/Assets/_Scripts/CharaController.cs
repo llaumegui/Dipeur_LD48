@@ -20,10 +20,7 @@ public class CharaController : MonoBehaviour
     bool _knightStun;
 
     [Header("Animation")]
-    public AnimationManager2D AnimKnight;
-    public AnimationManager2D AnimWizard;
-    int _antispamAnimKnight;
-    int _antispamAnimWizard;
+    public FeedbackKnight FeedbackKnight;
 
     [Header("Movement")]
     [Range(0, 1)]public float Speed;
@@ -138,9 +135,8 @@ public class CharaController : MonoBehaviour
             if(_throwing)
             {
                 _throwing = false;
-                _hasThrown = true;
                 ThrowBomb();
-                StartCoroutine(CooldownThrowAnim());
+                StartCoroutine(FeedbackKnight.LockAnim(FeedbackKnight.AnimState.Throw,.2f));
             }
         }
     }
@@ -171,6 +167,9 @@ public class CharaController : MonoBehaviour
             KnightPivot.localScale = new Vector3(-.5f, .5f, 1);
         else
             KnightPivot.localScale = new Vector3(.5f, .5f, 1);
+
+        //animAim
+        FeedbackKnight.State = FeedbackKnight.AnimState.Aim;
     }
 
     void ThrowBomb()
@@ -192,12 +191,6 @@ public class CharaController : MonoBehaviour
 
         _powerMult = 0;
     }
-
-    IEnumerator CooldownThrowAnim()
-    {
-        yield return new WaitForSeconds(.25f);
-        _hasThrown = false;
-    }
     #endregion
 
     void Movement()
@@ -211,29 +204,26 @@ public class CharaController : MonoBehaviour
         yInput = Input.GetAxisRaw("Vertical") * Speed;
 
         if (xInput != 0)
-        {
             _xValue = Mathf.Lerp(_xValue, xInput, AccelerationWizard);
-            //anim wizard
-        }
         else
-        {
             _xValue = Mathf.Lerp(_xValue, xInput, DecelerationWizard);
-            //idle wizard
-        }
 
         if (yInput != 0)
-        {
             _yValue = Mathf.Lerp(_yValue, yInput, AccelerationKnight);
-        }
         else
-        {
             _yValue = Mathf.Lerp(_yValue, yInput, DecelerationKnight);
-        }
 
         if (_xValue < .01f && _xValue > -.01f && xInput ==0)
             _xValue = 0;
         if (_yValue < .01f && _yValue>-.1f && yInput==0)
             _yValue = 0;
+
+        //Animations
+        if (_yValue != 0)
+            FeedbackKnight.State = FeedbackKnight.AnimState.Moving;
+        else
+            FeedbackKnight.State = FeedbackKnight.AnimState.Idle;
+
 
         float x = PlayersPos.x + _xValue;
         float y = PlayersPos.y + _yValue;
@@ -265,86 +255,13 @@ public class CharaController : MonoBehaviour
 
         _bombInertia = Mathf.Lerp(_bombInertia, 0, DecelerationWizard);
         if (_bombInertia < .01f && _bombInertia > -.01f)
-            _bombInertia = 0;
-
-        AnimationKnight();
-        
+            _bombInertia = 0;        
     }
 
     void ApplyMovement()
     {
         _knight.position = PlayersPos + new Vector2(0, KnightOffsetY);
         _wizard.position = new Vector2(-PlayersPos.x, WizardPosY);
-    }
-
-    void AnimationKnight()
-    {
-        float xInput = 0;
-        float yInput = 0;
-
-        xInput = Input.GetAxisRaw("Horizontal") * Speed;
-        yInput = Input.GetAxisRaw("Vertical") * Speed;
-
-        //Stuned
-        if (!_knightStun)
-        {
-            //a lancé
-            if(!_hasThrown)
-            {
-                //lancer
-                if (!_throwing)
-                {
-                    //move
-                    if (yInput != 0 && _yValue != 0)
-                    {
-                        if (yInput > 0 && _antispamAnimKnight != 1)
-                        {
-                            _antispamAnimKnight = 1;
-                            AnimKnight.PlayLoop(AnimationManager2D.States.Manivelle, 0, true);
-                        }
-
-                        if (yInput < 0 && _antispamAnimKnight != -1)
-                        {
-                            _antispamAnimKnight = -1;
-                            AnimKnight.PlayLoop(AnimationManager2D.States.Manivelle);
-                        }
-                    }
-                    else
-                    {
-                        //idle
-                        if (_antispamAnimKnight != 0)
-                        {
-                            _antispamAnimKnight = 0;
-                            AnimKnight.Play(AnimationManager2D.States.Idle);
-                        }
-                    }
-                }
-                else
-                {
-                    if (_antispamAnimKnight != 2)
-                    {
-                        _antispamAnimKnight = 2;
-                        AnimKnight.PlayLoop(AnimationManager2D.States.Aim);
-                    }
-                }
-            }
-            else
-            {
-                if(_antispamAnimKnight!=3)
-                {
-                    _antispamAnimKnight = 3;
-                    AnimKnight.Play(AnimationManager2D.States.Lancer);
-                }
-            }
-        }
-        else
-        {
-            if (_antispamAnimKnight != 4)
-            {
-                _antispamAnimKnight = 4;
-                AnimKnight.PlayLoop(AnimationManager2D.States.Stun, 2);
-            }
-        }
     }
 
     private void OnDrawGizmos()
