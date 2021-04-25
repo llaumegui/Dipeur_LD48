@@ -68,7 +68,7 @@ public class UIKnightPotions : MonoBehaviour
             }
             else
             {
-                for (int i = transform.childCount-1; i > 0; i--)
+                for (int i = transform.childCount-1; i >= 0; i--)
                 {
                     if (activeChildren > potions)
                     {

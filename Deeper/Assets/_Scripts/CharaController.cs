@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharaController : MonoBehaviour
 {
@@ -14,7 +15,15 @@ public class CharaController : MonoBehaviour
     public float KnightOffsetY;
 
     Transform _knight;
+    public Transform KnightPivot;
     Transform _wizard;
+    bool _knightStun;
+
+    [Header("Animation")]
+    public AnimationManager2D AnimKnight;
+    public AnimationManager2D AnimWizard;
+    int _antispamAnimKnight;
+    int _antispamAnimWizard;
 
     [Header("Movement")]
     [Range(0, 1)]public float Speed;
@@ -32,7 +41,8 @@ public class CharaController : MonoBehaviour
 
     [Header("Instances")]
     public GameObject Potion;
-    Transform _wizardSpawnPotion;
+    public Transform WizardSpawnPotion;
+    public Transform KnightSpawnPotion;
 
     [Header("Bombs")]
     public float ReloadTime;
@@ -40,22 +50,42 @@ public class CharaController : MonoBehaviour
     public int KnightMaxPotions;
     public int KnightPotions;
 
+    [Header("Throw")]
+    public float PowerChargeTime;
+    public float MaxPower;
+    float _powerMult;
+    bool _throwing;
+    float _timePowerCharge;
     float _reloadingTime;
+    Vector2 _aimDir;
 
+    bool _canThrow;
+    bool _hasThrown;
+
+    [Header("UI")]
+    public GameObject CanvasPowerBar;
+    public Image PowerBarFill;
 
     private void Awake()
     {
         _knight = Knight.GetComponent<Transform>();
         _wizard = Wizard.GetComponent<Transform>();
-        _wizardSpawnPotion = _wizard.GetChild(0);
     }
 
     private void Start()
     {
+        StartCoroutine(AntiThrow());
+
         KnightPotions = 2;
         GameMaster.I.UIPotions(KnightPotions);
 
         ApplyMovement();
+    }
+
+    IEnumerator AntiThrow()
+    {
+        yield return new WaitForSeconds(.5f);
+        _canThrow = true;
     }
 
     private void Update()
@@ -72,6 +102,21 @@ public class CharaController : MonoBehaviour
                 _reloadingTime = 0;
             }
         }
+
+        if(_throwing)
+        {
+            _timePowerCharge += Time.deltaTime / PowerChargeTime;
+
+            _powerMult = Mathf.Abs(Mathf.Sin(_timePowerCharge));
+            PowerBarFill.fillAmount = _powerMult;
+
+            Aim();
+        }
+
+        if (_powerMult != 0)
+            CanvasPowerBar.SetActive(true);
+        else
+            CanvasPowerBar.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -85,21 +130,105 @@ public class CharaController : MonoBehaviour
         {
             DropBomb();
         }
+
+        if(Input.GetMouseButtonDown(0) && KnightPotions>0 && _canThrow)
+            _throwing = true;
+        if (Input.GetMouseButtonUp(0))
+        {
+            if(_throwing)
+            {
+                _throwing = false;
+                _hasThrown = true;
+                ThrowBomb();
+                StartCoroutine(CooldownThrowAnim());
+            }
+        }
     }
+
+    void DropBomb()
+    {
+        _reloadingWizard = true;
+
+        GameObject bomb = Instantiate(Potion, WizardSpawnPotion.position, Quaternion.Euler(0, 0, -_bombInertia * 360));
+
+        if (bomb.TryGetComponent(out Rigidbody2D rb))
+            rb.AddForce(new Vector2(-_bombInertia * 20, 0), ForceMode2D.Impulse);
+
+        if (bomb.TryGetComponent(out Potion potion))
+            potion.Controller = this;
+        else
+            Debug.LogWarning("Potion Not Linked to CharaController");
+    }
+
+    #region Throw
+    void Aim()
+    {
+        Vector2 pointerPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        _aimDir = pointerPos - (Vector2)KnightSpawnPotion.position;
+
+        if (_aimDir.x > 0)
+            KnightPivot.localScale = new Vector3(-.5f, .5f, 1);
+        else
+            KnightPivot.localScale = new Vector3(.5f, .5f, 1);
+    }
+
+    void ThrowBomb()
+    {
+        _timePowerCharge = 0;
+
+        GameObject bomb = Instantiate(Potion, KnightSpawnPotion.position, Quaternion.identity);
+
+        if (bomb.TryGetComponent(out Rigidbody2D rb))
+            rb.AddForce(_aimDir*(MaxPower*_powerMult), ForceMode2D.Force);
+
+        if (bomb.TryGetComponent(out Potion potion))
+            potion.Controller = this;
+        else
+            Debug.LogWarning("Potion Not Linked to CharaController");
+
+        KnightPotions--;
+        GameMaster.I.UIPotions(KnightPotions);
+
+        _powerMult = 0;
+    }
+
+    IEnumerator CooldownThrowAnim()
+    {
+        yield return new WaitForSeconds(.25f);
+        _hasThrown = false;
+    }
+    #endregion
 
     void Movement()
     {
-        float xInput = Input.GetAxisRaw("Horizontal") * Speed;
-        float yInput = Input.GetAxisRaw("Vertical") * Speed;
+        float xInput = 0;
+        float yInput = 0;
+
+        xInput = Input.GetAxisRaw("Horizontal") * Speed;
+
+        if (!_throwing)
+        yInput = Input.GetAxisRaw("Vertical") * Speed;
 
         if (xInput != 0)
+        {
             _xValue = Mathf.Lerp(_xValue, xInput, AccelerationWizard);
+            //anim wizard
+        }
         else
+        {
             _xValue = Mathf.Lerp(_xValue, xInput, DecelerationWizard);
+            //idle wizard
+        }
+
         if (yInput != 0)
+        {
             _yValue = Mathf.Lerp(_yValue, yInput, AccelerationKnight);
+        }
         else
+        {
             _yValue = Mathf.Lerp(_yValue, yInput, DecelerationKnight);
+        }
 
         if (_xValue < .01f && _xValue > -.01f && xInput ==0)
             _xValue = 0;
@@ -137,6 +266,9 @@ public class CharaController : MonoBehaviour
         _bombInertia = Mathf.Lerp(_bombInertia, 0, DecelerationWizard);
         if (_bombInertia < .01f && _bombInertia > -.01f)
             _bombInertia = 0;
+
+        AnimationKnight();
+        
     }
 
     void ApplyMovement()
@@ -145,19 +277,74 @@ public class CharaController : MonoBehaviour
         _wizard.position = new Vector2(-PlayersPos.x, WizardPosY);
     }
 
-    void DropBomb()
+    void AnimationKnight()
     {
-        _reloadingWizard = true;
+        float xInput = 0;
+        float yInput = 0;
 
-        GameObject bomb = Instantiate(Potion, _wizardSpawnPotion.position, Quaternion.identity);
+        xInput = Input.GetAxisRaw("Horizontal") * Speed;
+        yInput = Input.GetAxisRaw("Vertical") * Speed;
 
-        if (bomb.TryGetComponent(out Rigidbody2D rb))
-            rb.AddForce(new Vector2(-_bombInertia * 50, -5), ForceMode2D.Impulse);
+        //Stuned
+        if (!_knightStun)
+        {
+            //a lancé
+            if(!_hasThrown)
+            {
+                //lancer
+                if (!_throwing)
+                {
+                    //move
+                    if (yInput != 0 && _yValue != 0)
+                    {
+                        if (yInput > 0 && _antispamAnimKnight != 1)
+                        {
+                            _antispamAnimKnight = 1;
+                            AnimKnight.PlayLoop(AnimationManager2D.States.Manivelle, 0, true);
+                        }
 
-        if (bomb.TryGetComponent(out Potion potion))
-            potion.Controller = this;
+                        if (yInput < 0 && _antispamAnimKnight != -1)
+                        {
+                            _antispamAnimKnight = -1;
+                            AnimKnight.PlayLoop(AnimationManager2D.States.Manivelle);
+                        }
+                    }
+                    else
+                    {
+                        //idle
+                        if (_antispamAnimKnight != 0)
+                        {
+                            _antispamAnimKnight = 0;
+                            AnimKnight.Play(AnimationManager2D.States.Idle);
+                        }
+                    }
+                }
+                else
+                {
+                    if (_antispamAnimKnight != 2)
+                    {
+                        _antispamAnimKnight = 2;
+                        AnimKnight.PlayLoop(AnimationManager2D.States.Aim);
+                    }
+                }
+            }
+            else
+            {
+                if(_antispamAnimKnight!=3)
+                {
+                    _antispamAnimKnight = 3;
+                    AnimKnight.Play(AnimationManager2D.States.Lancer);
+                }
+            }
+        }
         else
-            Debug.LogWarning("Potion Not Linked to CharaController");
+        {
+            if (_antispamAnimKnight != 4)
+            {
+                _antispamAnimKnight = 4;
+                AnimKnight.PlayLoop(AnimationManager2D.States.Stun, 2);
+            }
+        }
     }
 
     private void OnDrawGizmos()
