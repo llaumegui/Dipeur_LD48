@@ -79,6 +79,8 @@ public class Potion : MonoBehaviour
 
     void Explosion()
     {
+        ImportleSonLa.PlaySon("PotionExplosion");
+
         GameObject instance = null;
         if (PotionPack)
             instance = Instantiate(ExplosionFX, transform.position, Quaternion.identity);

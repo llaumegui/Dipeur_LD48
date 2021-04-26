@@ -119,6 +119,15 @@ public abstract class Ennemy : MonoBehaviour
             GameMaster.I.Health -= GetDamage(collision.gameObject.tag);
             GameMaster.I.ScreenShake();
 
+            if (collision.gameObject.tag == "Knight")
+                GameMaster.I.PlayFeedBack(GameMaster.CharacterType.Knight);
+
+            if (collision.gameObject.tag == "Player")
+                GameMaster.I.PlayFeedBack(GameMaster.CharacterType.Wizard);
+
+            if (collision.gameObject.tag == "Ascenseur")
+                GameMaster.I.PlayFeedBack(GameMaster.CharacterType.Ascenseur);
+
             if (collision.gameObject.tag == "Ascenseur")
                 Death();
         }

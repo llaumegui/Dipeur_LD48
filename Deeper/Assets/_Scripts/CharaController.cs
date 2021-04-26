@@ -74,10 +74,19 @@ public class CharaController : MonoBehaviour
     public GameObject CanvasReloadBarWizard;
     public Image ReloadBarFillWizard;
 
+    [Header("Sons")]
+    public AudioSource SonsMouvementKnight;
+    public AudioSource SonsMouvementWizard;
+    float _defaultVolumeKnight;
+    float _defaultVolumeWizard;
+
     private void Awake()
     {
         _knight = Knight.GetComponent<Transform>();
         _wizard = Wizard.GetComponent<Transform>();
+
+        _defaultVolumeKnight = SonsMouvementKnight.volume;
+        _defaultVolumeWizard = SonsMouvementWizard.volume;
     }
 
     private void Start()
@@ -95,7 +104,7 @@ public class CharaController : MonoBehaviour
         _canThrow = false;
         yield return new WaitForSeconds(.5f);
         _canThrow = true;
-        KnightPivot.localScale = new Vector3(.5f, .5f, 1);
+        //KnightPivot.localScale = new Vector3(.5f, .5f, 1);
     }
 
     private void Update()
@@ -155,7 +164,10 @@ public class CharaController : MonoBehaviour
         }
 
         if(Input.GetMouseButtonDown(0) && KnightPotions>0 && _canThrow)
+        {
             _throwing = true;
+            ImportleSonLa.PlaySon("SorsLaPotion");
+        }
         if (Input.GetMouseButtonUp(0))
         {
             if(_throwing)
@@ -220,6 +232,8 @@ public class CharaController : MonoBehaviour
 
         _powerMult = 0;
 
+        ImportleSonLa.PlaySon("PotionWoosh");
+
         StartCoroutine(ThrowCooldown());
     }
     #endregion
@@ -283,14 +297,26 @@ public class CharaController : MonoBehaviour
 
         //Animations
         if (_xValue != 0)
+        {
+            SonsMouvementWizard.volume = _defaultVolumeWizard;
             WizardFeedback.State = FeedbackWizard.AnimState.Moving;
+        }
         else
+        {
+            SonsMouvementWizard.volume = 0;
             WizardFeedback.State = FeedbackWizard.AnimState.Idle;
+        }
 
         if (_yValue != 0)
+        {
+            SonsMouvementKnight.volume = _defaultVolumeKnight;
             KnightFeedback.State = FeedbackKnight.AnimState.Moving;
+        }
         else
+        {
+            SonsMouvementKnight.volume = 0;
             KnightFeedback.State = FeedbackKnight.AnimState.Idle;
+        }
 
         ApplyMovement();
 

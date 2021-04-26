@@ -394,7 +394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2797403625078214318
 RectTransform:
   m_ObjectHideFlags: 0
@@ -922,6 +922,7 @@ MonoBehaviour:
   PlayersPos: {x: 0, y: 0}
   WizardPosY: 3.7
   KnightOffsetY: 10
+  KnightCenter: {fileID: 0}
   KnightPivot: {fileID: 2797403624839536911}
   KnightFeedback: {fileID: 6925987069328772479}
   WizardFeedback: {fileID: 2797403625598158763}

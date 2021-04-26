@@ -58,6 +58,8 @@ public class Zombie : Ennemy
 
     public void Throw()
     {
+        ImportleSonLa.PlaySon("zombraxKiTir");
+
         GameObject instance = Instantiate(Bullet, BulletSpawn.position, Quaternion.identity,transform);
         if (instance.TryGetComponent(out Rigidbody2D rb))
             rb.AddForce(ThrowDir.normalized * Power, ForceMode2D.Force);
@@ -67,6 +69,14 @@ public class Zombie : Ennemy
             if (_rotated)
                 script.Mult = -1;
         }
+    }
+
+    public override void Death(bool AddScore = false)
+    {
+        ImportleSonLa.PlaySon("ZombieMort");
+
+        base.Death(AddScore);
+
     }
 
     public override void OnDrawGizmos()

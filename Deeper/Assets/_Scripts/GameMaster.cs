@@ -71,6 +71,13 @@ public class GameMaster : MonoBehaviour
     float _shakeTime;
     bool _shaking;
 
+    public enum CharacterType
+    {
+        Knight,
+        Wizard,
+        Ascenseur,
+    }
+
     private void Awake()
     {
         SetPresets();
@@ -149,6 +156,24 @@ public class GameMaster : MonoBehaviour
                 _shaking = false;
                 _mainCam.transform.position = _camDefaultPos;
             }
+        }
+    }
+
+    public void PlayFeedBack(CharacterType type)
+    {
+        switch(type)
+        {
+            case CharacterType.Knight:
+                ImportleSonLa.PlaySon("ChevalierQuiPrendUnCoup");
+                //faire briller ce perso jcrois
+                break;
+            case CharacterType.Wizard:
+                ImportleSonLa.PlaySon("WizardQuiPrendUnCoup");
+                //faire briller ce perso jcrois
+                break;
+            case CharacterType.Ascenseur:
+                ImportleSonLa.PlaySon("AscenseurQuiPrendUnCoup");
+                break;
         }
     }
 

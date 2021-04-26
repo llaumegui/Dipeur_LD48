@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 7308848354479325629}
   - component: {fileID: -1251509327937660571}
   m_Layer: 9
-  m_Name: Meduse
+  m_Name: Son
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
