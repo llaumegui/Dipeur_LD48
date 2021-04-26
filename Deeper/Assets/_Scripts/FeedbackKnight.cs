@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class FeedbackKnight : MonoBehaviour
 {
@@ -14,18 +15,28 @@ public class FeedbackKnight : MonoBehaviour
     }
 
     public AnimState State;
+    [SerializeField] float hitSpeed = 0.1f;
+    [SerializeField] [ColorUsage(true, true)] Color hitColor = Color.white;
     bool _lock;
     float xInput;
     float yInput;
 
     [Header("Animation")]
     public AnimationManager2D AnimManager;
+    [SerializeField] SpriteRenderer knightSprite;
     int _antispam;
 
     [Header("Chains")]
     [SerializeField] TexturePanning[] chains;
     [SerializeField] Transform finalHinge;
     [SerializeField] Transform knightPod;
+
+    private void Hit()
+    {
+        knightSprite?.material.DOComplete();
+        knightSprite?.material.DOColor(hitColor, "_GlowColor", hitSpeed/2);
+        knightSprite?.material.DOColor(Color.black, "_GlowColor", hitSpeed).SetDelay(hitSpeed/2);
+    }
 
     private void Update()
     {
@@ -34,6 +45,9 @@ public class FeedbackKnight : MonoBehaviour
         RopeAnim();
         if (!_lock)
             PlayAnimations();
+
+        if (Input.GetKeyDown(KeyCode.E))
+            Hit();
     }
 
     void RopeAnim()

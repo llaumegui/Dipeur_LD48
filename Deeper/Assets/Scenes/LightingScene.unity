@@ -2953,7 +2953,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
+  hitSpeed: 0.1
+  hitColor: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
   AnimManager: {fileID: 3427044794444777688}
+  knightSprite: {fileID: 3427044794690694755}
   chains:
   - {fileID: 709021399}
   - {fileID: 1231980222}
@@ -3175,7 +3178,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49ecad89cdbab6041b56e9e4e4443bd1, type: 2}
+  - {fileID: 2100000, guid: 999c51708a308e541b0c79bd5dc7d8b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
