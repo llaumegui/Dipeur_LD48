@@ -90,6 +90,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlowColor: {r: 0, g: 0.3456, b: 0.348, a: 1}
-    - _OutlineColor: {r: 0, g: 12.741214, b: 12.996038, a: 1}
+    - _GlowColor: {r: 0, g: 0.4256941, b: 0.4301988, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
