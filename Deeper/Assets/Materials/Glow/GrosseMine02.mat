@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrosseMine01
+  m_Name: GrosseMine02
   m_Shader: {fileID: 4800000, guid: 2d76aaf3f92386c4eb29ee525cd2b9ae, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
-        m_Texture: {fileID: 2800000, guid: 4e7945351cee5bc47b4615c33d0ad8b1, type: 3}
+        m_Texture: {fileID: 2800000, guid: baf1f0e447203f5439d105a3a54dc781, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
