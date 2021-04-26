@@ -19,16 +19,11 @@ public class Zombie : Ennemy
     public GameObject Bullet;
     public Transform BulletSpawn;
 
-    public override void Awake()
-    {
-        base.Awake();
-    }
-
     private void Start()
     {
         if (transform.position.x > 0)
         {
-            Target.transform.localScale = new Vector3(-.5f, .5f, 1);
+            transform.localScale = new Vector3(-1, 1, 1);
             ThrowDir.x = -ThrowDir.x;
         }
     }

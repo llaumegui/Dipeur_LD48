@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parent: {fileID: 0}
+  FXExplosion: {fileID: 5037756866557130165, guid: aaf79b82fa436924d89ec293506ce089,
+    type: 3}
   GravityDir: {x: 0, y: 1}
   LerpIntensity: 0.05
 --- !u!50 &4319484378137399673
@@ -190,6 +192,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 61d9651c575a15a4790b3916a09803e2, type: 3}
     - {fileID: 21300000, guid: d9dcac82042f01e43a926193e6d5c023, type: 3}
     - {fileID: 21300000, guid: 903ffe6d81f875742b936053e167aa98, type: 3}
+    SpritesEmissive: []
     CustomFramerate: 0
     Loop: 0
     Reverse: 0

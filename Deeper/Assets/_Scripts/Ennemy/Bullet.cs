@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [HideInInspector] public Ennemy Parent;
+    public GameObject FXExplosion;
     Rigidbody2D _rb;
 
     [Header("Rotation")]
@@ -36,6 +37,7 @@ public class Bullet : MonoBehaviour
         if(collision.gameObject.tag == "Ennemy")
         {
             Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
+            return;
         }
         else
         {
@@ -45,6 +47,7 @@ public class Bullet : MonoBehaviour
             {
                 GameMaster.I.Health -= Parent.GetDamage(collision.gameObject.tag);
             }
+            return;
         }
     }
 
@@ -54,6 +57,9 @@ public class Bullet : MonoBehaviour
         _rb.isKinematic = true;
         _rb.gravityScale = 0;
         _rb.velocity = Vector3.zero;
+
+        GameObject instance = Instantiate(FXExplosion, transform.position, transform.rotation);
+        Destroy(instance, .5f);
         Destroy(gameObject, .05f);
     }
 

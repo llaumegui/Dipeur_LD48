@@ -7,6 +7,8 @@ public abstract class Ennemy : MonoBehaviour
     public GameObject Target;
     protected Transform _target;
 
+    public GameObject DeathFX;
+
     [Header("Values")]
     public float Health;
     bool _triggerDeath;
@@ -97,7 +99,13 @@ public abstract class Ennemy : MonoBehaviour
 
     public virtual void Death()
     {
-        Destroy(gameObject, .05f);
+        GameObject instance = null;
+
+        if (DeathFX != null)
+            instance = Instantiate(DeathFX, transform.position, Quaternion.identity);
+
+        Destroy(instance, .5f);
+        Destroy(gameObject, .025f);
     }
 
     public virtual void OnCollisionEnter2D(Collision2D collision)

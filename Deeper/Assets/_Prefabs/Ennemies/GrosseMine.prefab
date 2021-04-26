@@ -106,6 +106,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 339c8160816dbc14392835255269868f, type: 3}
     - {fileID: 21300000, guid: 84ef525918dc3cb44bb20c1cec2593eb, type: 3}
     - {fileID: 21300000, guid: 88ccb1bcd175a264f8cfdf0b35a2a4fe, type: 3}
+    SpritesEmissive: []
     CustomFramerate: 0
     Loop: 0
     Reverse: 0
@@ -232,6 +233,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 563ae80607748244583e437d5076448c, type: 3}
     - {fileID: 21300000, guid: 6ea281722570fde49b3b2d33c45a7ec9, type: 3}
     - {fileID: 21300000, guid: 2e1d6bc89cbed03439df737ece86c499, type: 3}
+    SpritesEmissive: []
     CustomFramerate: 0
     Loop: 0
     Reverse: 0
@@ -301,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 7562732953048580725}
+  DeathFX: {fileID: 0}
   Health: 3
   MaxDirs: {x: 0, y: 0.25}
   TimeMove: 1
@@ -457,6 +460,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: c6fc2ebb2bf78ed419b28b1a9c7ac749, type: 3}
     - {fileID: 21300000, guid: ece1c7dac98da02408c78162d0dc8976, type: 3}
     - {fileID: 21300000, guid: 3c3863ccc6d1ef14fbd32eb29a30b510, type: 3}
+    SpritesEmissive: []
     CustomFramerate: 0
     Loop: 0
     Reverse: 0
