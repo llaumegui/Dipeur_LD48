@@ -34,20 +34,11 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Ennemy")
-        {
-            Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
-            return;
-        }
-        else
-        {
-            Explosion();
+        Explosion();
 
-            if (collision.gameObject.tag == "Ascenseur" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Knight")
-            {
-                GameMaster.I.Health -= Parent.GetDamage(collision.gameObject.tag);
-            }
-            return;
+        if (collision.gameObject.tag == "Ascenseur" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Knight")
+        {
+            GameMaster.I.Health -= Parent.GetDamage(collision.gameObject.tag);
         }
     }
 
