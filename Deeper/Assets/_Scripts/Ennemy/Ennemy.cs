@@ -113,6 +113,10 @@ public abstract class Ennemy : MonoBehaviour
         if (collision.gameObject.tag == "Ascenseur" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Knight")
         {
             GameMaster.I.Health -= GetDamage(collision.gameObject.tag);
+            GameMaster.I.ScreenShake();
+
+            if (collision.gameObject.tag == "Ascenseur")
+                Death();
         }
     }
 

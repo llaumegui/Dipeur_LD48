@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CharaController : MonoBehaviour
 {
+    public bool DebugControl;
+
     public Vector2 MaxDirs;
 
     [Header("Characters")]
@@ -97,7 +99,7 @@ public class CharaController : MonoBehaviour
 
     private void Update()
     {
-        if(!GameMaster.I.GameOver)
+        if(!GameMaster.I.GameOver || DebugControl)
         {
             Inputs();
 
@@ -136,7 +138,7 @@ public class CharaController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!GameMaster.I.GameOver)
+        if(!GameMaster.I.GameOver || DebugControl)
         Movement();
     }
 

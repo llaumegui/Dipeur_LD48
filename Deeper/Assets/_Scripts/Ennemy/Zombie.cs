@@ -19,12 +19,15 @@ public class Zombie : Ennemy
     public GameObject Bullet;
     public Transform BulletSpawn;
 
+    bool _rotated;
+
     private void Start()
     {
         if (transform.position.x > 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
             ThrowDir.x = -ThrowDir.x;
+            _rotated = true;
         }
     }
 
@@ -59,7 +62,11 @@ public class Zombie : Ennemy
         if (instance.TryGetComponent(out Rigidbody2D rb))
             rb.AddForce(ThrowDir.normalized * Power, ForceMode2D.Force);
         if (instance.TryGetComponent(out Bullet script))
+        {
             script.Parent = this;
+            if (_rotated)
+                script.Mult = -1;
+        }
     }
 
     public override void OnDrawGizmos()

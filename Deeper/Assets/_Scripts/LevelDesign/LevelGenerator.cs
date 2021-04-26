@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public GameObject EndPrefab;
+    bool _endPlaced;
+
     [Header("Instances Placement")]
     public float YPosSpawn;
     public Transform PanningTransform;
@@ -49,6 +52,15 @@ public class LevelGenerator : MonoBehaviour
 
 
             _id++;
+        }
+        else
+        {
+            if(!_endPlaced)
+            {
+                _endPlaced = true;
+                GameObject instance = Instantiate(EndPrefab, new Vector2(0, YPosSpawn), Quaternion.identity);
+                instance.transform.parent = PanningWallTransform;
+            }
         }
     }
 

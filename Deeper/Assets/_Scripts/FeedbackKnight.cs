@@ -46,12 +46,13 @@ public class FeedbackKnight : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
             Hit();
+
+        if (!_lock)
+            PlayAnimations();
     }
 
     private void FixedUpdate()
     {
-        if (!_lock)
-            PlayAnimations();
     }
 
     void RopeAnim()

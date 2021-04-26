@@ -16,7 +16,7 @@ public class GameMaster : MonoBehaviour
     #endregion
 
     public bool InfiniteMode;
-    public bool GameOver;
+    [HideInInspector] public bool GameOver;
 
     [Header("Controller")]
     public CharaController ControllerScript;
@@ -26,8 +26,8 @@ public class GameMaster : MonoBehaviour
     [Header("Values")]
     public float DistanceTick;
 
-    public int Score;
-    public float Health;
+    [HideInInspector] public int Score;
+    [HideInInspector] public float Health;
     public float MaxHealth;
 
     int _score;
@@ -37,8 +37,10 @@ public class GameMaster : MonoBehaviour
     [Header("Level Design")]
     LevelGenerator _ld;
     public Vector2 MinMaxTimeSpawnLevel;
+    public float TimeDecrease;
     float _timeSpawnLevel;
     float _timeLevel;
+
     [Header("LevelPanning")]
     [Range(1,2)]public float PanningTick;
     [Range(1,3)]public float PanningWallTick;
@@ -50,8 +52,27 @@ public class GameMaster : MonoBehaviour
     public TextMeshProUGUI ScoreText;
     public Image HealthFillBar;
 
+    [Header("End")]
+    public GameObject CanvasEndGame;
+    public GameObject VictoryScreen;
+    public GameObject DefeatScreen;
+
+    [Header("Mise en Scène")]
+    public List<Vector2> ExplosionsPos;
+    public GameObject ExplosionFX;
+
+    [Header("ScreenShake")]
+    Camera _mainCam;
+    Vector3 _camDefaultPos;
+    public float ScreenShakeIntensity;
+    public float ShakeTick;
+    float _shakeTime;
+    bool _shaking;
+
     private void Awake()
     {
+        _mainCam = Camera.main;
+        _camDefaultPos = _mainCam.transform.position;
         _ld = GetComponent<LevelGenerator>();
         _timeSpawnLevel = MinMaxTimeSpawnLevel.y;
         _panningTransform = _ld.PanningTransform;
@@ -65,9 +86,12 @@ public class GameMaster : MonoBehaviour
         _i = this;
     }
 
-    void Start()
+    private void Start()
     {
-        
+        if(TimeDecrease==0)
+        {
+            TimeDecrease = MinMaxTimeSpawnLevel.y/10;
+        }
     }
 
     void Update()
@@ -81,10 +105,15 @@ public class GameMaster : MonoBehaviour
                 Score++;
             }
             _timeLevel += Time.deltaTime;
+
             if (_timeLevel >= _timeSpawnLevel)
             {
                 _timeLevel = 0;
                 _ld.TriggerSpawn();
+
+                _timeSpawnLevel -= TimeDecrease;
+                if (_timeSpawnLevel <= MinMaxTimeSpawnLevel.x)
+                    _timeSpawnLevel = MinMaxTimeSpawnLevel.x;
             }
 
             //Panning
@@ -105,12 +134,26 @@ public class GameMaster : MonoBehaviour
 
         if (Health <= 0)
             EndGame();
+
+        if(_shaking)
+        {
+            _shakeTime += Time.deltaTime / ShakeTick;
+            if(_shakeTime>=1)
+            {
+                _shakeTime = 0;
+                _shaking = false;
+                _mainCam.transform.position = _camDefaultPos;
+            }
+        }
     }
 
-    void EndGame(bool win = false)
+    public void EndGame(bool win = false)
     {
         GameOver = true;
-        //trigger end;
+        if(win)
+            StartCoroutine(Victory());
+        else
+            StartCoroutine(Defeat());
     }
 
     private void FixedUpdate()
@@ -139,5 +182,49 @@ public class GameMaster : MonoBehaviour
         float hpFill = (Health/MaxHealth);
         Debug.Log(hpFill);
         HealthFillBar.fillAmount = hpFill;
+    }
+
+    IEnumerator Victory()
+    {
+        yield return new WaitForSeconds(1);
+
+        CanvasEndGame.SetActive(true);
+        VictoryScreen.SetActive(true);
+    }
+
+    public void ScreenShake()
+    {
+        _shaking = true;
+        float x = Random.Range(0, ScreenShakeIntensity);
+        float y = Random.Range(0, ScreenShakeIntensity);
+        _mainCam.transform.position += new Vector3(x, y);
+    }
+
+    IEnumerator Defeat()
+    {
+        if(ExplosionsPos.Count>0)
+        {
+            for(int i = 0;i<5;i++)
+            {
+                GameObject instance = Instantiate(ExplosionFX, ExplosionsPos[Random.Range(0, ExplosionsPos.Count)], Quaternion.identity);
+                ScreenShake();
+                yield return new WaitForSeconds(.3f);
+            }
+        }
+        yield return new WaitForSeconds(.5f);
+        CanvasEndGame.SetActive(true);
+        DefeatScreen.SetActive(true);
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(ExplosionsPos.Count>0)
+        {
+            foreach(Vector2 pos in ExplosionsPos)
+            {
+                Gizmos.DrawWireSphere(pos, .1f);
+            }
+        }
     }
 }

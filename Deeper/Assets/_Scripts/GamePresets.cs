@@ -6,5 +6,5 @@ public static class GamePresets
 {
     public static bool InfiniteMode;
     public static int Player;
-    public static bool Qwerty;
+    public static bool Azerty;
 }

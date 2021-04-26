@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     [Range(0, .2f)] public float LerpIntensity;
 
     bool _exploded;
+    public float Mult = 1;
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class Bullet : MonoBehaviour
     {
         Vector2 dir = _rb.velocity.normalized;
         float angleDif = Vector3.Angle(dir, GravityDir);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, -angleDif), LerpIntensity);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, (-angleDif * Mult)), LerpIntensity);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -49,8 +50,8 @@ public class Bullet : MonoBehaviour
         _rb.gravityScale = 0;
         _rb.velocity = Vector3.zero;
 
-        GameObject instance = Instantiate(FXExplosion, transform.position, transform.rotation);
-        Destroy(instance, .5f);
+        GameObject instance = Instantiate(FXExplosion, transform.position, Quaternion.identity);
+        Destroy(instance, 1f);
         Destroy(gameObject, .05f);
     }
 
