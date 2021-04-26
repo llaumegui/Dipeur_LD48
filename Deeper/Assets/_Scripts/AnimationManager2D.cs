@@ -28,6 +28,7 @@ public class AnimationManager2D : MonoBehaviour
 
 	List<Sprite> _sprites;
 	List<Sprite> _emissive;
+	Material spriteMaterial;
 	bool _looping;
 	float _framerate;
 	bool _hasShadow;
@@ -50,6 +51,7 @@ public class AnimationManager2D : MonoBehaviour
 		if (TargetRenderer == null)
 			TargetRenderer = GetComponent<SpriteRenderer>();
 		_sprites = SetSprites(States.Idle);
+		spriteMaterial = TargetRenderer.material;
 
 		if (ShadowRenderer != null)
 			_hasShadow = true;
@@ -89,9 +91,16 @@ public class AnimationManager2D : MonoBehaviour
 
 			if(_emissive.Count==_sprites.Count)
             {
+				Texture2D croppedTexture = new Texture2D((int)_emissive[_index].rect.width, (int)_emissive[_index].rect.height);
+				Color[] pixels = _emissive[_index].texture.GetPixels((int)_emissive[_index].rect.x,
+														(int)_emissive[_index].rect.y,
+														(int)_emissive[_index].rect.width,
+														(int)_emissive[_index].rect.height);
+				croppedTexture.SetPixels(pixels);
+				croppedTexture.Apply();
 
-            }
-			//Update _emissive[_index];
+				spriteMaterial.SetTexture("_Emissive", croppedTexture);
+			}
 
 			if (_hasShadow)
 				ShadowRenderer.sprite = _sprites[_index];

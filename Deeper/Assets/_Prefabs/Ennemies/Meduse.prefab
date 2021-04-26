@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8501786913659154751}
   - component: {fileID: 264214360892209453}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,11 +25,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868043257972126102}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.119999886, y: 0.18, z: -1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
-  m_Father: {fileID: 7308848354479325628}
-  m_RootOrder: 1
+  m_Father: {fileID: 7308848355147220395}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &264214360892209453
 Light:
@@ -43,8 +43,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.5990566, g: 0.94436496, b: 1, a: 1}
-  m_Intensity: 20
-  m_Range: 5
+  m_Intensity: 12.33
+  m_Range: 3.63
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -80,7 +80,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 823
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 7308848354479325628}
   - component: {fileID: 7308848354479325629}
   - component: {fileID: -1251509327937660571}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Meduse
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
@@ -118,12 +118,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7308848354479325602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7308848355147220395}
-  - {fileID: 8501786913659154751}
-  - {fileID: 3485626042126331566}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -229,7 +227,7 @@ GameObject:
   - component: {fileID: 7308848355147220392}
   - component: {fileID: 8721353222054121946}
   - component: {fileID: 6659582059879216915}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Circle
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
@@ -246,7 +244,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_Children: []
+  m_Children:
+  - {fileID: 8501786913659154751}
+  - {fileID: 3485626042126331566}
   m_Father: {fileID: 7308848354479325628}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -326,6 +326,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: efb382b3b38791a4cb5df62d05d87b1d, type: 3}
     - {fileID: 21300000, guid: 0c26293113049a943840966fb7c4be93, type: 3}
     - {fileID: 21300000, guid: 60e0336c7ce33f04ebec341a734a39e3, type: 3}
+    SpritesEmissive: []
     CustomFramerate: 0
     Loop: 0
     Reverse: 0
@@ -351,12 +352,17 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7308848354479325628}
+    m_TransformParent: {fileID: 7308848355147220395}
     m_Modifications:
     - target: {fileID: 8284405356020073419, guid: 30009896c0032414a94c6b7efce34f61,
         type: 3}
       propertyPath: m_Name
       value: Lucioles
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284405356020073419, guid: 30009896c0032414a94c6b7efce34f61,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8284405356020073420, guid: 30009896c0032414a94c6b7efce34f61,
         type: 3}
@@ -396,7 +402,7 @@ PrefabInstance:
     - target: {fileID: 8284405356020073420, guid: 30009896c0032414a94c6b7efce34f61,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8284405356020073420, guid: 30009896c0032414a94c6b7efce34f61,
         type: 3}
@@ -412,6 +418,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284405356020073420, guid: 30009896c0032414a94c6b7efce34f61,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284405356020073420, guid: 30009896c0032414a94c6b7efce34f61,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284405356020073420, guid: 30009896c0032414a94c6b7efce34f61,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284405356020073421, guid: 30009896c0032414a94c6b7efce34f61,
+        type: 3}
+      propertyPath: NoiseModule.sizeAmount.scalar
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284405356020073421, guid: 30009896c0032414a94c6b7efce34f61,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30009896c0032414a94c6b7efce34f61, type: 3}

@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 5463271321818558631}
   - component: {fileID: 3142572023080145977}
   - component: {fileID: 2041955905788354806}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite (2)
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1174708362958794503
 Transform:
   m_ObjectHideFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 6518262290451420267}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5463271321818558631
 SpriteRenderer:
@@ -104,6 +104,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5186ac06813acf24683d731ed2eccbf5, type: 3}
     - {fileID: 21300000, guid: 5b0ab440a8bbefa46805c7139f8b1e8d, type: 3}
     - {fileID: 21300000, guid: c8becce75da404147bbd3b4f2dc5a359, type: 3}
+    SpritesEmissive: []
     CustomFramerate: 0
     Loop: 0
     Reverse: 0
@@ -134,6 +135,98 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.75, y: 2.5}
   m_EdgeRadius: 0
+--- !u!1 &6010517523405760534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134258634588598830}
+  - component: {fileID: 5834379443273117665}
+  m_Layer: 9
+  m_Name: Point Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &134258634588598830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010517523405760534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.002, z: -0.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6518262290451420267}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &5834379443273117665
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6010517523405760534}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 2
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 7.95
+  m_Range: 3.07
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 823
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &6518262290451420269
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +239,7 @@ GameObject:
   - component: {fileID: 6518262290451420266}
   - component: {fileID: 5387142097819596715}
   - component: {fileID: 2980570570833408571}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mine
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
@@ -164,6 +257,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 134258634588598830}
   - {fileID: 6518262291427867395}
   - {fileID: 4632295335332483157}
   - {fileID: 1174708362958794503}
@@ -183,6 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 6518262291427867396}
+  DeathFX: {fileID: 0}
   Health: 1
   MaxDirs: {x: 0, y: 0.25}
   TimeMove: 1
@@ -245,7 +340,7 @@ GameObject:
   - component: {fileID: 6518262291427867394}
   - component: {fileID: 2667327766050068215}
   - component: {fileID: 8858604528153605892}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
@@ -264,7 +359,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 6518262290451420267}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6518262291427867394
 SpriteRenderer:
@@ -284,7 +379,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49ecad89cdbab6041b56e9e4e4443bd1, type: 2}
+  - {fileID: 2100000, guid: 5fd31bc4ee51dfe41995400e2e0e055e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -337,6 +432,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 14477f6c657d15946b6ef0b0b03c73c0, type: 3}
     - {fileID: 21300000, guid: a9483431fc7741142b13428e4900a7f8, type: 3}
     - {fileID: 21300000, guid: d24be37e83b1141428b09828614af3ef, type: 3}
+    SpritesEmissive:
+    - {fileID: 21300000, guid: 8a5666431837eee4399743b3104df009, type: 3}
     CustomFramerate: 0
     Loop: 0
     Reverse: 0
@@ -379,7 +476,7 @@ GameObject:
   - component: {fileID: 3914434159143630189}
   - component: {fileID: 6442714587695881736}
   - component: {fileID: 8380198831674352598}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite (1)
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
@@ -398,7 +495,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 6518262290451420267}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3914434159143630189
 SpriteRenderer:
@@ -418,7 +515,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49ecad89cdbab6041b56e9e4e4443bd1, type: 2}
+  - {fileID: 2100000, guid: b71324ffb7318054392e697ba625d17e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -471,6 +568,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 266a1593f524abe409942653df4b44bf, type: 3}
     - {fileID: 21300000, guid: ab819bdf830641b4ba142fd8d33795b9, type: 3}
     - {fileID: 21300000, guid: 4b64bed370bd5b24baeaae9e9aed7fcf, type: 3}
+    SpritesEmissive:
+    - {fileID: 21300000, guid: 8225ee5dc2c5fd24fa5a4622ae85e528, type: 3}
     CustomFramerate: 0
     Loop: 0
     Reverse: 0
