@@ -39,6 +39,7 @@ public class AnimationManager2D : MonoBehaviour
 		Move,
 		Stun,
 		Lancer,
+		Death,
 		Debug,
 	}
 

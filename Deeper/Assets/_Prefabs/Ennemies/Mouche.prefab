@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4887556203119927374}
   - component: {fileID: 4887556203119927375}
+  - component: {fileID: 6661251586290482420}
+  - component: {fileID: 74889730764390756}
   m_Layer: 0
-  m_Name: Square
-  m_TagString: Untagged
+  m_Name: Sprite
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4887556203119927372}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.15, y: 0.1, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4887556203365707186}
   m_RootOrder: 0
@@ -49,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2b430bd52bd0ede4f9a24489e76fa6e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -70,8 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0258e5ee7a002204eb8707d14fa40d56, type: 3}
-  m_Color: {r: 0.15761836, g: 0.4339623, b: 0.3295921, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0b4ecae1d638a2d4fb68abd14cea305d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -81,6 +83,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &6661251586290482420
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887556203119927372}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.35, y: -0.2}
+  serializedVersion: 2
+  m_Radius: 1
+--- !u!114 &74889730764390756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887556203119927372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422996cdb84dc4e4da63442423f34a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetRenderer: {fileID: 4887556203119927375}
+  ShadowRenderer: {fileID: 0}
+  Framerate: 0.2
+  AnimationList:
+  - State: 0
+    Sprites:
+    - {fileID: 21300000, guid: 0b4ecae1d638a2d4fb68abd14cea305d, type: 3}
+    - {fileID: 21300000, guid: 1628986b05107a04c8c7c12540232608, type: 3}
+    - {fileID: 21300000, guid: ae1787a84ce150244b542c698122a434, type: 3}
+    - {fileID: 21300000, guid: 4f1a3665a98a2314487a7a1714de7aae, type: 3}
+    CustomFramerate: 0
+    Loop: 0
+    Reverse: 0
+    DebugActivate: 0
 --- !u!1 &4887556203365707184
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,9 +135,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4887556203365707186}
   - component: {fileID: 4887556203365707187}
+  - component: {fileID: 2654919749250090998}
   m_Layer: 0
   m_Name: Mouche
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,15 +172,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 4887556203119927372}
   Health: 2
-  MaxDirs: {x: 3, y: 0}
+  MaxDirs: {x: 2, y: 0}
   TimeMove: 1
   DamageCharacters:
   - Type: 0
-    Damage: 1
+    Damage: 2
     TimeStun: 0
   - Type: 1
     Damage: 1
     TimeStun: 0
   - Type: 2
-    Damage: 2
+    Damage: 1
     TimeStun: 0
+--- !u!50 &2654919749250090998
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4887556203365707184}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7

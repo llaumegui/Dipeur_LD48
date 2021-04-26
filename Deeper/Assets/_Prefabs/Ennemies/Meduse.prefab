@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7308848354479325628}
   - component: {fileID: 7308848354479325629}
+  - component: {fileID: -1251509327937660571}
   m_Layer: 0
   m_Name: Meduse
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,14 +50,14 @@ MonoBehaviour:
   MaxDirs: {x: 0, y: 1}
   TimeMove: 2
   DamageCharacters:
+  - Type: 1
+    Damage: 1
+    TimeStun: 1
+  - Type: 2
+    Damage: 1
+    TimeStun: 1
   - Type: 0
-    Damage: 0
-    TimeStun: 0
-  - Type: 0
-    Damage: 0
-    TimeStun: 0
-  - Type: 0
-    Damage: 0
+    Damage: 2
     TimeStun: 0
   MovementCurve:
     serializedVersion: 2
@@ -100,7 +101,28 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  MeduseSpeed: 0.02
+  MeduseSpeed: 0.03
+--- !u!50 &-1251509327937660571
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7308848354479325602}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!1 &7308848355147220393
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,9 +133,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7308848355147220395}
   - component: {fileID: 7308848355147220392}
+  - component: {fileID: 8721353222054121946}
+  - component: {fileID: 6659582059879216915}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,7 +151,7 @@ Transform:
   m_GameObject: {fileID: 7308848355147220393}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 7308848354479325628}
   m_RootOrder: 0
@@ -150,7 +174,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2b430bd52bd0ede4f9a24489e76fa6e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,8 +195,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dcc5944a1a113e742bee82401174ab5e, type: 3}
-  m_Color: {r: 0.9427678, g: 0.514151, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: decdc41b6435d004ebbd3f9cb199556e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -182,3 +206,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8721353222054121946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7308848355147220393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 422996cdb84dc4e4da63442423f34a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetRenderer: {fileID: 7308848355147220392}
+  ShadowRenderer: {fileID: 0}
+  Framerate: 0.25
+  AnimationList:
+  - State: 0
+    Sprites:
+    - {fileID: 21300000, guid: f694fccbc2febec4ab0fe673191a813f, type: 3}
+    - {fileID: 21300000, guid: 0cc254cfb0c4d2c49bad0095dc6ea5f1, type: 3}
+    - {fileID: 21300000, guid: 6802592c53046df49b648b2b395c4948, type: 3}
+    - {fileID: 21300000, guid: b02f351b10c627643870048c7309136e, type: 3}
+    - {fileID: 21300000, guid: decdc41b6435d004ebbd3f9cb199556e, type: 3}
+    - {fileID: 21300000, guid: efb382b3b38791a4cb5df62d05d87b1d, type: 3}
+    - {fileID: 21300000, guid: 0c26293113049a943840966fb7c4be93, type: 3}
+    - {fileID: 21300000, guid: 60e0336c7ce33f04ebec341a734a39e3, type: 3}
+    CustomFramerate: 0
+    Loop: 0
+    Reverse: 0
+    DebugActivate: 0
+--- !u!58 &6659582059879216915
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7308848355147220393}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.75}
+  serializedVersion: 2
+  m_Radius: 1.5

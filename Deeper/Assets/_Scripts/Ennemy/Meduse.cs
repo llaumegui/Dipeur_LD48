@@ -12,8 +12,6 @@ public class Meduse : Ennemy
     public override void Update()
     {
         base.Update();
-
-
     }
 
     public override void Move()
@@ -35,15 +33,5 @@ public class Meduse : Ennemy
 
             _target.position += (Vector3)((MaxDirs * value)*MeduseSpeed);
         }
-    }
-
-    public override void OnCollisionEnter2D(Collision2D collision)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Death()
-    {
-        throw new System.NotImplementedException();
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Knight
   - Ascenseur
+  - MurFriable
   layers:
   - Default
   - TransparentFX

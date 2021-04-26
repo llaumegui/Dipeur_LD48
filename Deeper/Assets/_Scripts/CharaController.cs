@@ -155,7 +155,10 @@ public class CharaController : MonoBehaviour
             rb.AddForce(new Vector2(-_bombInertia * 20, 0), ForceMode2D.Impulse);
 
         if (bomb.TryGetComponent(out Potion potion))
+        {
             potion.Controller = this;
+            potion.PotionPack = true;
+        }
         else
             Debug.LogWarning("Potion Not Linked to CharaController");
     }
@@ -183,7 +186,7 @@ public class CharaController : MonoBehaviour
         GameObject bomb = Instantiate(Potion, KnightSpawnPotion.position, Quaternion.identity);
 
         if (bomb.TryGetComponent(out Rigidbody2D rb))
-            rb.AddForce(_aimDir*(MaxPower*_powerMult), ForceMode2D.Force);
+            rb.AddForce(_aimDir.normalized*(MaxPower*_powerMult), ForceMode2D.Force);
 
         if (bomb.TryGetComponent(out Potion potion))
             potion.Controller = this;

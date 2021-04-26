@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8088979915637380366}
   m_Layer: 0
   m_Name: MurFriable
-  m_TagString: Ascenseur
+  m_TagString: MurFriable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,9 +118,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2103728850238355669}
   - component: {fileID: 3579869861069381276}
+  - component: {fileID: 6685863887758678730}
   m_Layer: 0
   m_Name: Mur Friable
-  m_TagString: Untagged
+  m_TagString: MurFriable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,3 +167,24 @@ MonoBehaviour:
   - Type: 3
     Damage: 0
     TimeStun: 0
+--- !u!50 &6685863887758678730
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165934147267210828}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7

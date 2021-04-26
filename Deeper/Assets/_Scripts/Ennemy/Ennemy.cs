@@ -8,7 +8,7 @@ public abstract class Ennemy : MonoBehaviour
     protected Transform _target;
 
     [Header("Values")]
-    public int Health;
+    public float Health;
     bool _triggerDeath;
 
     [Header("Movement")]
@@ -42,13 +42,14 @@ public abstract class Ennemy : MonoBehaviour
 
     public virtual void Update()
     {
-        Move();
 
-        if(Health<=0 && !_triggerDeath)
+        if (Health<=0 && !_triggerDeath)
         {
             _triggerDeath = true;
             Death();
         }
+        else
+            Move();
     }
 
     public virtual void Move()
@@ -63,14 +64,49 @@ public abstract class Ennemy : MonoBehaviour
             _timeMove += Time.deltaTime / TimeMove;
 
             float value = Mathf.Cos(_timeMove);
-            Debug.Log(value);
+            //Debug.Log(value);
             _target.position = (Vector2)transform.position+ (MaxDirs * value);
         }
     }
 
-    public abstract void Death();
+    public float GetDamage(string tag)
+    {
+        PlayerType type = PlayerType.Empty;
 
-    public abstract void OnCollisionEnter2D(Collision2D collision);
+        if (tag == "Ascenseur")
+            type = PlayerType.Ascenseur;
+        else if (tag == "Knight")
+            type = PlayerType.Knight;
+        else
+            type = PlayerType.Wizard;
+        if (type != PlayerType.Empty)
+        {
+            foreach(DamageData data in DamageCharacters)
+            {
+                if(data.Type == type)
+                {
+                    return data.Damage;
+                }
+            }
+
+            return 0;
+        }
+        else
+            return 0;
+    }
+
+    public virtual void Death()
+    {
+        Destroy(gameObject, .05f);
+    }
+
+    public virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ascenseur" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Knight")
+        {
+            GameMaster.I.Health -= GetDamage(collision.gameObject.tag);
+        }
+    }
 
     public virtual void OnDrawGizmos()
     {
