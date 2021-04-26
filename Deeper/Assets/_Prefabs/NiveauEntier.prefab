@@ -1257,7 +1257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1547708557100091033}
   - component: {fileID: 1547708557100091046}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: background_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1430,7 +1430,7 @@ GameObject:
   - component: {fileID: 1547708557359990678}
   - component: {fileID: 1547708557359990679}
   - component: {fileID: 1547708557359990676}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WallSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1526,7 +1526,7 @@ GameObject:
   - component: {fileID: 1547708557488555520}
   - component: {fileID: 1547708557488555534}
   - component: {fileID: 1547708557488555521}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: background_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1660,7 +1660,7 @@ GameObject:
   - component: {fileID: 1547708557661199243}
   - component: {fileID: 1547708557661199241}
   - component: {fileID: 1547708557661199240}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: background_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2141,7 +2141,7 @@ GameObject:
   - component: {fileID: 1547708558172236370}
   - component: {fileID: 1547708558172236373}
   - component: {fileID: 1547708558172236371}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Machine
   m_TagString: Ascenseur
   m_Icon: {fileID: 0}
@@ -2253,7 +2253,7 @@ GameObject:
   - component: {fileID: 1547708558190808747}
   - component: {fileID: 1547708558190808744}
   - component: {fileID: 1547708558190808745}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Machine_roue_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2415,7 +2415,7 @@ GameObject:
   - component: {fileID: 1547708558321321551}
   - component: {fileID: 1547708558321321549}
   - component: {fileID: 1547708558321321548}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: background_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2549,7 +2549,7 @@ GameObject:
   - component: {fileID: 1547708558447804816}
   - component: {fileID: 1547708558447804817}
   - component: {fileID: 1547708558447804830}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Machine_roue_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2645,7 +2645,7 @@ GameObject:
   - component: {fileID: 1547708558579348620}
   - component: {fileID: 1547708558579348618}
   - component: {fileID: 1547708558579348621}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Machine_roue_b (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2873,7 +2873,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1547708558805795776}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2909,7 +2909,7 @@ GameObject:
   - component: {fileID: 1547708559013712440}
   - component: {fileID: 1547708559013712582}
   - component: {fileID: 1547708559013712441}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Machine_roue_a (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3809,6 +3809,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1547708558439723610}
     m_Modifications:
+    - target: {fileID: 514279337, guid: dcae0e690b49fee48860afa51f7847c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 514279338, guid: dcae0e690b49fee48860afa51f7847c7, type: 3}
+      propertyPath: m_Intensity
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 514279338, guid: dcae0e690b49fee48860afa51f7847c7, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 823
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522725302, guid: dcae0e690b49fee48860afa51f7847c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522725303, guid: dcae0e690b49fee48860afa51f7847c7, type: 3}
+      propertyPath: m_Intensity
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522725303, guid: dcae0e690b49fee48860afa51f7847c7, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 823
+      objectReference: {fileID: 0}
     - target: {fileID: 2797403625078214317, guid: dcae0e690b49fee48860afa51f7847c7,
         type: 3}
       propertyPath: m_IsActive

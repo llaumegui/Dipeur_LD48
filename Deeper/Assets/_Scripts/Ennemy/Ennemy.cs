@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public abstract class Ennemy : MonoBehaviour
 {
     public GameObject Target;
     protected Transform _target;
 
+    [Header("Feedbacks")]
+    [SerializeField] protected SpriteRenderer spriteRender;
+    [SerializeField] protected float hitSpeed = 0.1f;
     public GameObject DeathFX;
 
     [Header("Values")]
@@ -41,11 +45,11 @@ public abstract class Ennemy : MonoBehaviour
     public virtual void Awake()
     {
         _defaultPos = transform.position;
+        spriteRender = GetComponentInChildren<SpriteRenderer>();
     }
 
     public virtual void Update()
     {
-
         if (Health<=0 && !_triggerDeath)
         {
             _triggerDeath = true;
@@ -53,6 +57,14 @@ public abstract class Ennemy : MonoBehaviour
         }
         else
             Move();
+    }
+
+    public virtual void Hit(float Damage)
+    {
+        Health -= Damage;
+        spriteRender?.material.DOComplete();
+        spriteRender?.material.DOFloat(1, "_Emission", hitSpeed);
+        spriteRender?.material.DOFloat(0, "_Emission", hitSpeed/2).SetDelay(hitSpeed);
     }
 
     public virtual void Move()

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 5186ac06813acf24683d731ed2eccbf5, type: 3}
   m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0
@@ -461,6 +461,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 6518262291427867396}
+  spriteRender: {fileID: 0}
+  hitSpeed: 0.1
   DeathFX: {fileID: 0}
   Health: 1
   ScoreValue: 10
@@ -476,6 +478,10 @@ MonoBehaviour:
   - Type: 2
     Damage: 3
     TimeStun: 1
+  renderers:
+  - {fileID: 6518262291427867394}
+  - {fileID: 3914434159143630189}
+  - {fileID: 5463271321818558631}
 --- !u!114 &5387142097819596715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,7 +591,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 14477f6c657d15946b6ef0b0b03c73c0, type: 3}
   m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0
@@ -722,7 +728,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 266a1593f524abe409942653df4b44bf, type: 3}
   m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0

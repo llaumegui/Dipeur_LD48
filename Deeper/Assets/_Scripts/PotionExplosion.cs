@@ -22,11 +22,11 @@ public class PotionExplosion : MonoBehaviour
         {
             Debug.Log(collision.gameObject);
             if (collision.gameObject.TryGetComponent(out Ennemy script))
-                script.Health -= Damage;
+                script.Hit(Damage);
             else
             {
                 if (collision.gameObject.transform.parent.TryGetComponent(out Ennemy ennemy))
-                    ennemy.Health -= Damage;
+                    ennemy.Hit(Damage);
             }
         }
 

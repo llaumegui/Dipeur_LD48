@@ -230,6 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 2643789579948118911}
+  spriteRender: {fileID: 0}
+  hitSpeed: 0.1
   DeathFX: {fileID: 5068139493759209799, guid: 46ac0b98fdf1ee846b99df292e30235f, type: 3}
   Health: 2
   ScoreValue: 100
@@ -315,8 +317,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.5
-  m_Range: 5.21
+  m_Intensity: 1.11
+  m_Range: 10.02
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

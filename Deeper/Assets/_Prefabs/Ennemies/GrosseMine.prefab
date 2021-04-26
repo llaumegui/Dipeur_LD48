@@ -43,7 +43,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 6.8
+  m_Intensity: 4
   m_Range: 2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -264,7 +264,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 6.8
+  m_Intensity: 4
   m_Range: 2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -356,7 +356,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 6.8
+  m_Intensity: 4
   m_Range: 2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -583,7 +583,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 7562732953048580725}
-  DeathFX: {fileID: 0}
+  spriteRender: {fileID: 0}
+  hitSpeed: 0.1
+  DeathFX: {fileID: 500606033391119219, guid: 096987000ba52bb4dad851aaf873daee, type: 3}
   Health: 3
   ScoreValue: 50
   MaxDirs: {x: 0, y: 0.25}
@@ -598,6 +600,10 @@ MonoBehaviour:
   - Type: 2
     Damage: 5
     TimeStun: 2
+  renderers:
+  - {fileID: 7562732953048580723}
+  - {fileID: 3847534541030958675}
+  - {fileID: 8973731292336837128}
 --- !u!114 &8665846781678800602
 MonoBehaviour:
   m_ObjectHideFlags: 0
