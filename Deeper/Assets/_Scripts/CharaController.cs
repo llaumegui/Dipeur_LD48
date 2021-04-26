@@ -136,7 +136,7 @@ public class CharaController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(GameMaster.I.GameOver)
+        if(!GameMaster.I.GameOver)
         Movement();
     }
 

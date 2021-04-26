@@ -30,7 +30,7 @@ public class UIKnightPotions : MonoBehaviour
         if (AmmoText != null)
             AmmoText.text = potions.ToString();
 
-        Debug.LogWarning(transform.childCount);
+        //Debug.LogWarning(transform.childCount);
 
         if(transform.childCount<potions)
         {

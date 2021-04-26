@@ -14,6 +14,7 @@ public class AnimationManager2D : MonoBehaviour
 	{
 		public AnimationManager2D.States State;
 		public List<Sprite> Sprites;
+		public List<Sprite> SpritesEmissive;
 		public float CustomFramerate;
 
 		[Header("Debug")]
@@ -26,6 +27,7 @@ public class AnimationManager2D : MonoBehaviour
 	float _timer;
 
 	List<Sprite> _sprites;
+	List<Sprite> _emissive;
 	bool _looping;
 	float _framerate;
 	bool _hasShadow;
@@ -70,7 +72,7 @@ public class AnimationManager2D : MonoBehaviour
 
 	void DisplaySprite()
 	{
-		Debug.Log("Looping " + _looping +" " + _sprites[_index]);
+		//Debug.Log("Looping " + _looping +" " + _sprites[_index]);
 
 		_timer += Time.deltaTime;
 		if (_timer > _framerate)
@@ -84,6 +86,13 @@ public class AnimationManager2D : MonoBehaviour
 			}
 
 			TargetRenderer.sprite = _sprites[_index];
+
+			if(_emissive.Count==_sprites.Count)
+            {
+
+            }
+			//Update _emissive[_index];
+
 			if (_hasShadow)
 				ShadowRenderer.sprite = _sprites[_index];
 		}
@@ -141,11 +150,19 @@ public class AnimationManager2D : MonoBehaviour
 		else
 			_looping = false;
 
-
 		if (animSelected.CustomFramerate > 0)
 			_framerate = animSelected.CustomFramerate;
 		else
 			_framerate = Framerate;
+
+		List<Sprite> emissive = new List<Sprite>();
+
+		if(animSelected.SpritesEmissive.Count>0)
+        {
+			for (int i = 0; i < animSelected.SpritesEmissive.Count; i++)
+				emissive.Add(animSelected.SpritesEmissive[i]);
+        }
+		_emissive = emissive;
 
 		if(!reverse)
 		return animSelected.Sprites;
