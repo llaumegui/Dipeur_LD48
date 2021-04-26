@@ -16,6 +16,7 @@ public class GameMaster : MonoBehaviour
     #endregion
 
     public bool InfiniteMode;
+    public Texture2D AimCursor;
     [HideInInspector] public bool GameOver;
 
     [Header("Controller")]
@@ -35,11 +36,11 @@ public class GameMaster : MonoBehaviour
     float _timeDistance;
 
     [Header("Level Design")]
-    LevelGenerator _ld;
     public Vector2 MinMaxTimeSpawnLevel;
     public float TimeDecrease;
     float _timeSpawnLevel;
     float _timeLevel;
+    LevelGenerator _ld;
 
     [Header("LevelPanning")]
     [Range(1,2)]public float PanningTick;
@@ -71,6 +72,7 @@ public class GameMaster : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.SetCursor(AimCursor,Vector2.zero,CursorMode.Auto);
         _mainCam = Camera.main;
         _camDefaultPos = _mainCam.transform.position;
         _ld = GetComponent<LevelGenerator>();

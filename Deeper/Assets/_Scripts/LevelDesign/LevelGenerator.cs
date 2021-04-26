@@ -20,7 +20,7 @@ public class LevelGenerator : MonoBehaviour
     {
         Mine,
         BigMine,
-        Skeleton,
+        Zombie,
         JellyFish,
         Fly,
         Plank,
@@ -102,7 +102,7 @@ public class LevelGenerator : MonoBehaviour
         else
             t.parent = PanningTransform;
 
-        if (prefab.Type == TypeOfPrefab.Plank || prefab.Type == TypeOfPrefab.Skeleton)
+        if (prefab.Type == TypeOfPrefab.Plank || prefab.Type == TypeOfPrefab.Zombie)
             t.parent = PanningWallTransform;
 
         t.position = new Vector2(x, YPosSpawn);
