@@ -31,7 +31,9 @@ public class CharaController : MonoBehaviour
     [Header("Movement Knight")]
     [Range(0, 1)]public float SpeedKnight;
     [Range(0,.5f)]public float AccelerationKnight;
-    [Range(0, .5f)] public float DecelerationKnight;
+    [Range(0, .5f)]public float DecelerationKnight;
+    [Range(0, .1f)]public float DescentLerp;
+    [HideInInspector] public float OffsetWallKnight;
 
     float _xValue;
     float _yValue;
@@ -225,9 +227,14 @@ public class CharaController : MonoBehaviour
         if (_yValue < .01f && _yValue>-.1f && yInput==0)
             _yValue = 0;
 
+        float yOffset=0;
+        if(yInput==0)
+        {
+            yOffset = Mathf.Lerp(0, -1, DescentLerp);
+        }
 
         float x = PlayersPos.x + _xValue;
-        float y = PlayersPos.y + _yValue;
+        float y = PlayersPos.y + _yValue + yOffset + OffsetWallKnight;
 
         if (x > MaxDirs.x || x < -MaxDirs.x)
         {

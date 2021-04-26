@@ -17,6 +17,11 @@ public class GameMaster : MonoBehaviour
 
     public bool InfiniteMode;
 
+    [Header("Controller")]
+    public CharaController ControllerScript;
+    [Range(0, .1f)] public float KnightOffsetWall;
+    [HideInInspector] public bool OffsetWall;
+
     [Header("Values")]
     public float DistanceTick;
 
@@ -33,9 +38,11 @@ public class GameMaster : MonoBehaviour
     public Vector2 MinMaxTimeSpawnLevel;
     float _timeSpawnLevel;
     float _timeLevel;
-    public SpriteRenderer Panning;
-    [Range(0,1)]public float PanningTick;
+    [Header("LevelPanning")]
+    [Range(1,2)]public float PanningTick;
+    [Range(1,3)]public float PanningWallTick;
     Transform _panningTransform;
+    Transform _panningWallTransform;
 
     [Header("UI")]
     public UIKnightPotions KnightPotionsScript;
@@ -47,6 +54,7 @@ public class GameMaster : MonoBehaviour
         _ld = GetComponent<LevelGenerator>();
         _timeSpawnLevel = MinMaxTimeSpawnLevel.y;
         _panningTransform = _ld.PanningTransform;
+        _panningWallTransform = _ld.PanningWallTransform;
 
         Health = MaxHealth;
 
@@ -80,6 +88,7 @@ public class GameMaster : MonoBehaviour
 
             //Panning
             _panningTransform.position += Vector3.up * (Time.deltaTime / PanningTick);
+            _panningWallTransform.position += Vector3.up * (Time.deltaTime / PanningWallTick);
         }
 
         if(_score!=Score)
@@ -92,6 +101,17 @@ public class GameMaster : MonoBehaviour
             _health = Health;
             UIHealth();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (OffsetWall)
+        {
+            ControllerScript.OffsetWallKnight = KnightOffsetWall;
+            OffsetWall = false;
+        }
+        else
+            ControllerScript.OffsetWallKnight = 0;
     }
 
     public void UIPotions(int potions)

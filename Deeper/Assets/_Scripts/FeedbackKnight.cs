@@ -43,11 +43,15 @@ public class FeedbackKnight : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
         RopeAnim();
-        if (!_lock)
-            PlayAnimations();
 
         if (Input.GetKeyDown(KeyCode.E))
             Hit();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!_lock)
+            PlayAnimations();
     }
 
     void RopeAnim()
@@ -119,6 +123,8 @@ public class FeedbackKnight : MonoBehaviour
                     {
                         _antispam = 2;
                         AnimManager.PlayLoop(AnimationManager2D.States.Aim);
+                        Debug.Log("AimAnimPlay");
+
                     }
                 }
             }

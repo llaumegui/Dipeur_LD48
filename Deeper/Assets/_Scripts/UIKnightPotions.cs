@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIKnightPotions : MonoBehaviour
 {
+    public TextMeshProUGUI AmmoText;
+
     public Sprite PotionSprite;
     public float Scale;
 
@@ -24,6 +27,9 @@ public class UIKnightPotions : MonoBehaviour
 
     public void UpdateUI(int potions)
     {
+        if (AmmoText != null)
+            AmmoText.text = "x " + potions;
+
         Debug.LogWarning(transform.childCount);
 
         if(transform.childCount<potions)

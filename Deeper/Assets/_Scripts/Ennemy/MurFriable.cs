@@ -4,8 +4,22 @@ using UnityEngine;
 
 public class MurFriable : Ennemy
 {
-    public override void OnCollisionEnter2D(Collision2D collision)
+    bool _enableOffset;
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        base.OnCollisionEnter2D(collision);
+        if (collision.gameObject.tag == "Knight")
+            _enableOffset = true;
+    }
+
+    private void FixedUpdate()
+    {
+        if(_enableOffset)
+        {
+            _enableOffset = false;
+            GameMaster.I.OffsetWall = true;
+        }
+        else
+            GameMaster.I.OffsetWall = false;
     }
 }

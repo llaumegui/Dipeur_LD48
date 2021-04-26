@@ -22,8 +22,11 @@ public class Zombie : Ennemy
     public override void Awake()
     {
         base.Awake();
+    }
 
-        if(Target.transform.position.x>0)
+    private void Start()
+    {
+        if (transform.position.x > 0)
         {
             Target.transform.localScale = new Vector3(-.5f, .5f, 1);
             ThrowDir.x = -ThrowDir.x;

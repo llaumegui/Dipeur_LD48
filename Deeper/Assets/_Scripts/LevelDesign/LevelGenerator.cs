@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour
     [Header("Instances Placement")]
     public float YPosSpawn;
     public Transform PanningTransform;
+    public Transform PanningWallTransform;
     public Transform StillTransform;
 
     GameMaster _gm;
@@ -88,6 +89,9 @@ public class LevelGenerator : MonoBehaviour
             t.parent = StillTransform;
         else
             t.parent = PanningTransform;
+
+        if (prefab.Type == TypeOfPrefab.Plank || prefab.Type == TypeOfPrefab.Skeleton)
+            t.parent = PanningWallTransform;
 
         t.position = new Vector2(x, YPosSpawn);
 

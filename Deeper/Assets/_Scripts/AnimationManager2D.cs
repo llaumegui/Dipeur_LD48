@@ -70,6 +70,8 @@ public class AnimationManager2D : MonoBehaviour
 
 	void DisplaySprite()
 	{
+		Debug.Log("Looping " + _looping +" " + _sprites[_index]);
+
 		_timer += Time.deltaTime;
 		if (_timer > _framerate)
 		{

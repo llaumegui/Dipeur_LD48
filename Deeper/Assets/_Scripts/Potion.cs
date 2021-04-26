@@ -64,6 +64,7 @@ public class Potion : MonoBehaviour
             if (collision.gameObject.TryGetComponent(out Ennemy script))
                 script.Death();
             Explosion();
+            return;
         }
 
         if(collision.gameObject.tag == "Knight" && PotionPack)
@@ -79,10 +80,13 @@ public class Potion : MonoBehaviour
             return;
         }
 
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Ennemy" || ((collision.gameObject.tag == "Player" || collision.gameObject.tag == "Knight" || collision.gameObject.tag == "Ascenseur") && !PotionPack))
+        if(collision.gameObject.tag == "Knight" && !PotionPack)
         {
-            Explosion();
+            Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
+            return;
         }
+
+        Explosion();
     }
 
     //Explosion
@@ -112,7 +116,8 @@ public class Potion : MonoBehaviour
         _rb.gravityScale = 0;
         _rb.velocity = Vector3.zero;
         ExplosionObject.SetActive(true);
-        Destroy(gameObject, .5f);
+        //instantiate explosionFX;
+        Destroy(gameObject, .05f);
     }
 
     private void OnBecameInvisible()
