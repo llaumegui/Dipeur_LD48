@@ -128,6 +128,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1547708556985461325, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: MinMaxPlacements.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547708556985461325, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: MinMaxPlacements.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1547708557106144503, guid: 59675abe701beb94f878e3a4bd76140c,
         type: 3}
       propertyPath: m_Camera

@@ -15,6 +15,7 @@ public class CharaController : MonoBehaviour
     public Vector2 PlayersPos;
     public float WizardPosY = 3;
     public float KnightOffsetY;
+    public Transform KnightCenter;
 
     Transform _knight;
     public Transform KnightPivot;
@@ -189,7 +190,7 @@ public class CharaController : MonoBehaviour
     {
         Vector2 pointerPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        _aimDir = pointerPos - (Vector2)_knight.position;
+        _aimDir = pointerPos - (Vector2)KnightCenter.position;
 
         if (_aimDir.x > 0)
             KnightPivot.localScale = new Vector3(-.5f, .5f, 1);
@@ -228,10 +229,10 @@ public class CharaController : MonoBehaviour
         float xInput = 0;
         float yInput = 0;
 
-        xInput = Input.GetAxisRaw("Horizontal") * SpeedWizard;
+        xInput = Input.GetAxisRaw("Horizontal1P") * SpeedWizard;
 
         if (!_throwing)
-        yInput = Input.GetAxisRaw("Vertical") * SpeedKnight;
+        yInput = Input.GetAxisRaw("Vertical1P") * SpeedKnight;
 
         if (xInput != 0)
             _xValue = Mathf.Lerp(_xValue, xInput, AccelerationWizard);

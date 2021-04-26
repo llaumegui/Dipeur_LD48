@@ -28,8 +28,8 @@ public class FeedbackWizard : MonoBehaviour
 
     void PlayAnimations()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
+        xInput = Input.GetAxisRaw("Horizontal1P");
+        yInput = Input.GetAxisRaw("Vertical1P");
 
         //Stuned
         if (State != AnimState.Stun)

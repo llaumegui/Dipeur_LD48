@@ -121,6 +121,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &151926269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151926270}
+  m_Layer: 0
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &151926270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151926269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1, y: -1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1368418051}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &162226085
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,6 +668,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355778161}
   m_CullTransparentMesh: 0
+--- !u!4 &1368418051 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1547708557405375305, guid: 59675abe701beb94f878e3a4bd76140c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1547708557525607494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1450572882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,6 +1118,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1547708556985461325, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: LevelOrder.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547708556985461325, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: NbrOfInstances
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547708556985461325, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: LevelOrder.Array.data[0].EnableCustomPos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547708556985461325, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: LevelOrder.Array.data[0].InstanceNumbers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547708556985461325, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: LevelOrder.Array.data[1].InstanceNumbers
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547708556985461325, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: LevelOrder.Array.data[2].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547708556985461325, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: LevelOrder.Array.data[3].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547708556985461325, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: LevelOrder.Array.data[3].EnableCustomPos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547708556985461325, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: LevelOrder.Array.data[4].Type
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1547708556985461327, guid: 59675abe701beb94f878e3a4bd76140c,
         type: 3}
       propertyPath: CanvasEndGame
@@ -1097,6 +1178,21 @@ PrefabInstance:
       propertyPath: DefeatScreen
       value: 
       objectReference: {fileID: 2116081157}
+    - target: {fileID: 1547708556985461327, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: MinMaxTimeSpawnLevel.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547708556985461327, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: TimeDecrease
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547708557106144491, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1547708557106144503, guid: 59675abe701beb94f878e3a4bd76140c,
         type: 3}
       propertyPath: m_Camera
@@ -1107,6 +1203,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 162226087}
+    - target: {fileID: 1547708557626093034, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: KnightCenter
+      value: 
+      objectReference: {fileID: 151926270}
     - target: {fileID: 1547708557775923604, guid: 59675abe701beb94f878e3a4bd76140c,
         type: 3}
       propertyPath: m_Camera

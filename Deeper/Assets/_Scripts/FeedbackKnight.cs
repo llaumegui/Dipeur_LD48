@@ -40,8 +40,8 @@ public class FeedbackKnight : MonoBehaviour
 
     private void Update()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
+        xInput = Input.GetAxisRaw("Horizontal1P");
+        yInput = Input.GetAxisRaw("Vertical1P");
         RopeAnim();
 
         if (Input.GetKeyDown(KeyCode.E))

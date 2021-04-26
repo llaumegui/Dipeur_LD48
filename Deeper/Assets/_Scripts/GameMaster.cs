@@ -57,6 +57,7 @@ public class GameMaster : MonoBehaviour
     public GameObject CanvasEndGame;
     public GameObject VictoryScreen;
     public GameObject DefeatScreen;
+    bool _antispamEnd;
 
     [Header("Mise en Scène")]
     public List<Vector2> ExplosionsPos;
@@ -72,7 +73,7 @@ public class GameMaster : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.SetCursor(AimCursor,Vector2.zero,CursorMode.Auto);
+        SetPresets();
         _mainCam = Camera.main;
         _camDefaultPos = _mainCam.transform.position;
         _ld = GetComponent<LevelGenerator>();
@@ -90,7 +91,9 @@ public class GameMaster : MonoBehaviour
 
     private void Start()
     {
-        if(TimeDecrease==0)
+        Cursor.SetCursor(AimCursor, Vector2.zero, CursorMode.Auto);
+
+        if (TimeDecrease==0)
         {
             TimeDecrease = MinMaxTimeSpawnLevel.y/10;
         }
@@ -149,13 +152,22 @@ public class GameMaster : MonoBehaviour
         }
     }
 
+    void SetPresets()
+    {
+
+    }
+
     public void EndGame(bool win = false)
     {
-        GameOver = true;
-        if(win)
-            StartCoroutine(Victory());
-        else
-            StartCoroutine(Defeat());
+        if(!_antispamEnd)
+        {
+            _antispamEnd = true;
+            GameOver = true;
+            if (win)
+                StartCoroutine(Victory());
+            else
+                StartCoroutine(Defeat());
+        }
     }
 
     private void FixedUpdate()
@@ -209,6 +221,7 @@ public class GameMaster : MonoBehaviour
             for(int i = 0;i<5;i++)
             {
                 GameObject instance = Instantiate(ExplosionFX, ExplosionsPos[Random.Range(0, ExplosionsPos.Count)], Quaternion.identity);
+                Destroy(instance, 1);
                 ScreenShake();
                 yield return new WaitForSeconds(.3f);
             }

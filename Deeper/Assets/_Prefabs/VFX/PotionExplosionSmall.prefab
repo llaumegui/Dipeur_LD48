@@ -77,6 +77,11 @@ PrefabInstance:
       propertyPath: ShapeModule.radius.value
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3376319672161291255, guid: 096987000ba52bb4dad851aaf873daee,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5574815029360936608, guid: 096987000ba52bb4dad851aaf873daee,
         type: 3}
       propertyPath: Damage

@@ -13,6 +13,9 @@ public class LevelGenerator : MonoBehaviour
     public Transform PanningWallTransform;
     public Transform StillTransform;
 
+    [Header("RandomPlacement")]
+    public Vector2 MinMaxPlacements;
+
     GameMaster _gm;
     int _id;
 
@@ -27,6 +30,8 @@ public class LevelGenerator : MonoBehaviour
         Empty,
     }
 
+    public int NbrOfInstances;
+
     [Header("Level Design")]
     public List<LevelData> LevelOrder;
 
@@ -39,7 +44,7 @@ public class LevelGenerator : MonoBehaviour
 
     public void TriggerSpawn()
     {
-        if(_id<LevelOrder.Count || _gm.InfiniteMode)
+        if(_id<LevelOrder.Count || _gm.InfiniteMode || _id<NbrOfInstances)
         {
             if(_id<LevelOrder.Count)
             {
@@ -86,26 +91,38 @@ public class LevelGenerator : MonoBehaviour
 
     void InstantiatePrefab(LevelPrefab prefab,bool levelOrderParameters = false)
     {
-        GameObject instance = Instantiate(prefab.Instance);
-        Transform t = instance.GetComponent<Transform>();
-
-        prefab.SetVariables();
-
-        float x = prefab.XPosition;
+        int nbr = (int)Random.Range(MinMaxPlacements.x, MinMaxPlacements.y);
 
         if (levelOrderParameters)
-            if (LevelOrder[_id].EnableCustomPos)
-                x = LevelOrder[_id].CustomPos;
-
-        if (prefab.IsStill)
-            t.parent = StillTransform;
-        else
-            t.parent = PanningTransform;
+            if (LevelOrder[_id].InstanceNumbers != 0)
+                nbr = LevelOrder[_id].InstanceNumbers;
 
         if (prefab.Type == TypeOfPrefab.Plank || prefab.Type == TypeOfPrefab.Zombie)
-            t.parent = PanningWallTransform;
+            nbr = 1;
 
-        t.position = new Vector2(x, YPosSpawn);
+        for(int i =0;i<nbr;i++)
+        {
+            GameObject instance = Instantiate(prefab.Instance);
+            Transform t = instance.GetComponent<Transform>();
+
+            prefab.SetVariables();
+
+            float x = prefab.XPosition;
+
+            if (levelOrderParameters)
+                if (LevelOrder[_id].EnableCustomPos)
+                    x = LevelOrder[_id].CustomPos;
+
+            if (prefab.IsStill)
+                t.parent = StillTransform;
+            else
+                t.parent = PanningTransform;
+
+            if (prefab.Type == TypeOfPrefab.Plank || prefab.Type == TypeOfPrefab.Zombie)
+                t.parent = PanningWallTransform;
+
+            t.position = new Vector2(x, YPosSpawn);
+        }
 
     }
 
@@ -144,6 +161,7 @@ public class LevelGenerator : MonoBehaviour
     public class LevelData
     {
         public TypeOfPrefab Type;
+        public int InstanceNumbers;
         [Header("CustomPos")]
         public bool EnableCustomPos;
         public int CustomPos;

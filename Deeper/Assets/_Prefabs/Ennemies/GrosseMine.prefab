@@ -584,6 +584,7 @@ MonoBehaviour:
   Target: {fileID: 7562732953048580725}
   DeathFX: {fileID: 0}
   Health: 3
+  ScoreValue: 50
   MaxDirs: {x: 0, y: 0.25}
   TimeMove: 1
   DamageCharacters:

@@ -11,6 +11,7 @@ public abstract class Ennemy : MonoBehaviour
 
     [Header("Values")]
     public float Health;
+    public int ScoreValue;
     bool _triggerDeath;
 
     [Header("Movement")]
@@ -48,7 +49,7 @@ public abstract class Ennemy : MonoBehaviour
         if (Health<=0 && !_triggerDeath)
         {
             _triggerDeath = true;
-            Death();
+            Death(true);
         }
         else
             Move();
@@ -97,12 +98,15 @@ public abstract class Ennemy : MonoBehaviour
             return 0;
     }
 
-    public virtual void Death()
+    public virtual void Death(bool AddScore = false)
     {
         GameObject instance = null;
 
         if (DeathFX != null)
             instance = Instantiate(DeathFX, transform.position, Quaternion.identity);
+
+        if (AddScore)
+            GameMaster.I.Score += ScoreValue;
 
         Destroy(instance, .5f);
         Destroy(gameObject, .025f);
