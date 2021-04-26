@@ -10,10 +10,10 @@ Material:
   m_Name: Meduse
   m_Shader: {fileID: 4800000, guid: 2d76aaf3f92386c4eb29ee525cd2b9ae, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA _ALPHAMASK_ON
-  m_LightmapFlags: 0
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_DoubleSidedGI: 1
+  m_CustomRenderQueue: 4000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -78,7 +78,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 0
+    - _Metallic: 1
     - _Mode: 0
     - _OcclusionStrength: 1
     - _OutlineWidth: 0
@@ -95,5 +95,5 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0, g: 5.89926, b: 10.432951, a: 1}
+    - _OutlineColor: {r: 0, g: 29.051365, b: 51.377876, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

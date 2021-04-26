@@ -9,29 +9,19 @@ public class TexturePanning : MonoBehaviour
     [SerializeField] float speed = 0.5f;
     public bool active;
 
-    public float Speed
-    {
-        get => speed;
-        set
-        {
-            active = true;
-            speed = value;
-        }
-    }
-
     private void Awake()
     {
         spr = GetComponent<SpriteRenderer>();
     }
 
+    public void Offset(bool positive)
+    {
+        spr.material.SetTextureOffset("_MainTex", Vector2.up * (positive ? speed : -speed) * Time.unscaledTime / 10);
+    }
+
     private void Update()
     {
         if (active)
-            spr.material.mainTextureOffset = Vector2.up * Speed * (Time.unscaledTime);
-    }
-
-    private void FixedUpdate()
-    {
-        //active = false;
+            Offset(true);
     }
 }

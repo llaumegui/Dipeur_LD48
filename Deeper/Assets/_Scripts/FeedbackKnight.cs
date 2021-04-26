@@ -29,15 +29,18 @@ public class FeedbackKnight : MonoBehaviour
 
     private void Update()
     {
-        if (finalHinge != null && knightPod != null)
-            RopeAnim();
-
+        xInput = Input.GetAxisRaw("Horizontal");
+        yInput = Input.GetAxisRaw("Vertical");
+        RopeAnim();
         if (!_lock)
             PlayAnimations();
     }
 
     void RopeAnim()
     {
+        if (!finalHinge || !knightPod)
+            return;
+
         knightPod.position = finalHinge.position;
         Quaternion newRot = finalHinge.rotation;
         newRot.eulerAngles += Vector3.forward * 90;
@@ -46,20 +49,21 @@ public class FeedbackKnight : MonoBehaviour
         if (yInput > 0)
         {
             for (int i = 0; i < chains.Length; i++)
-                chains[i].Speed *= i % 2 == 0 ? 1 : -1;
+            {
+                chains[i].Offset(i % 2 == 0);
+            }
         }
-        if (yInput < 0)
+        else if (yInput < 0)
         {
             for (int i = 0; i < chains.Length; i++)
-                chains[i].Speed *= i % 2 != 0 ? 1 : -1;
+            {
+                chains[i].Offset(i % 2 != 0);
+            }
         }
     }
 
     void PlayAnimations()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
-
         //Stuned
         if (State != AnimState.Stun)
         {
