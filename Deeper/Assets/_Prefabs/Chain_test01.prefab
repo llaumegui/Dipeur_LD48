@@ -75,8 +75,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -3
-    m_UpperAngle: 3
+    m_LowerAngle: 0
+    m_UpperAngle: 0
 --- !u!1 &596232057891058515
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,15 +299,15 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.13853279, y: 10.76761}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -3
-    m_UpperAngle: 3
+    m_LowerAngle: 0
+    m_UpperAngle: 0
 --- !u!1 &2146986008668172480
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,8 +383,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -3
-    m_UpperAngle: 3
+    m_LowerAngle: 0
+    m_UpperAngle: 0
 --- !u!1 &3622825189119194143
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,8 +460,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -3
-    m_UpperAngle: 3
+    m_LowerAngle: 0
+    m_UpperAngle: 0
 --- !u!1 &4349445238980956972
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,8 +537,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -3
-    m_UpperAngle: 3
+    m_LowerAngle: 0
+    m_UpperAngle: 0
 --- !u!1 &4834716314730235119
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,8 +614,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -3
-    m_UpperAngle: 3
+    m_LowerAngle: 0
+    m_UpperAngle: 0
 --- !u!1 &4992661802869664497
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,8 +691,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -3
-    m_UpperAngle: 3
+    m_LowerAngle: 0
+    m_UpperAngle: 0
 --- !u!1 &5966614215420812756
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +717,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5966614215420812756}
   m_LocalRotation: {x: -0, y: -0, z: 0.009805561, w: 0.99995196}
-  m_LocalPosition: {x: 0.37699908, y: 0.23439643, z: 0}
+  m_LocalPosition: {x: 0.31, y: 0.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 609796489894453649}
@@ -749,9 +749,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5966614215772353805}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 3663922365008510163}
   - {fileID: 5269003336560163082}
@@ -1020,8 +1020,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -3
-    m_UpperAngle: 3
+    m_LowerAngle: 0
+    m_UpperAngle: 0
 --- !u!1 &6644291857255157515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,8 +1174,8 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -3
-    m_UpperAngle: 3
+    m_LowerAngle: 0
+    m_UpperAngle: 0
 --- !u!1 &8315479591575908190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,5 +1251,5 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -3
-    m_UpperAngle: 3
+    m_LowerAngle: 0
+    m_UpperAngle: 0

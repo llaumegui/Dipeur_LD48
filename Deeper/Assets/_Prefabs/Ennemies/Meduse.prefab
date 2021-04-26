@@ -43,7 +43,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.5990566, g: 0.94436496, b: 1, a: 1}
-  m_Intensity: 12.33
+  m_Intensity: 4.51
   m_Range: 3.63
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 7308848355147220393}
+  DeathFX: {fileID: 0}
   Health: 1
   MaxDirs: {x: 0, y: 1}
   TimeMove: 2

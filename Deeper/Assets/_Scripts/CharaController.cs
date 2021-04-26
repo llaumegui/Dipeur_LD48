@@ -99,7 +99,11 @@ public class CharaController : MonoBehaviour
 
     private void Update()
     {
-        if(!GameMaster.I.GameOver || DebugControl)
+        Vector3 targetPos = CanvasPowerBarKnight.transform.position;
+        targetPos.x = KnightPivot.position.x;
+        targetPos.y = KnightPivot.position.y;
+        CanvasPowerBarKnight.transform.position = KnightPivot.position;
+        if (!GameMaster.I.GameOver || DebugControl)
         {
             Inputs();
 
