@@ -21,7 +21,7 @@ public class TexturePanning : MonoBehaviour
 
     private void Update()
     {
-        if (active)
+        if (active && !GameMaster.I.GameOver)
             Offset(true);
     }
 }

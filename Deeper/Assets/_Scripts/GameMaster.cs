@@ -16,6 +16,7 @@ public class GameMaster : MonoBehaviour
     #endregion
 
     public bool InfiniteMode;
+    public bool GameOver;
 
     [Header("Controller")]
     public CharaController ControllerScript;
@@ -71,7 +72,7 @@ public class GameMaster : MonoBehaviour
 
     void Update()
     {
-        if(Health>0)
+        if(!GameOver)
         {
             _timeDistance += Time.deltaTime;
             if (_timeDistance >= DistanceTick)
@@ -101,6 +102,15 @@ public class GameMaster : MonoBehaviour
             _health = Health;
             UIHealth();
         }
+
+        if (Health <= 0)
+            EndGame();
+    }
+
+    void EndGame(bool win = false)
+    {
+        GameOver = true;
+        //trigger end;
     }
 
     private void FixedUpdate()

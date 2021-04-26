@@ -66,8 +66,10 @@ public class CharaController : MonoBehaviour
     bool _hasThrown;
 
     [Header("UI")]
-    public GameObject CanvasPowerBar;
-    public Image PowerBarFill;
+    public GameObject CanvasPowerBarKnight;
+    public Image PowerBarFillKnight;
+    public GameObject CanvasReloadBarWizard;
+    public Image ReloadBarFillWizard;
 
     private void Awake()
     {
@@ -77,7 +79,7 @@ public class CharaController : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(AntiThrow());
+        StartCoroutine(ThrowCooldown());
 
         KnightPotions = 2;
         GameMaster.I.UIPotions(KnightPotions);
@@ -85,45 +87,56 @@ public class CharaController : MonoBehaviour
         ApplyMovement();
     }
 
-    IEnumerator AntiThrow()
+    IEnumerator ThrowCooldown()
     {
+        _canThrow = false;
         yield return new WaitForSeconds(.5f);
         _canThrow = true;
+        KnightPivot.localScale = new Vector3(.5f, .5f, 1);
     }
 
     private void Update()
     {
-        Inputs();
-
-        if (_reloadingWizard)
+        if(!GameMaster.I.GameOver)
         {
-            _reloadingTime += Time.deltaTime;
+            Inputs();
 
-            if(_reloadingTime >=ReloadTime)
+            if (_reloadingWizard)
             {
-                _reloadingWizard = false;
-                _reloadingTime = 0;
+                CanvasReloadBarWizard.SetActive(true);
+
+                _reloadingTime += Time.deltaTime / ReloadTime;
+                ReloadBarFillWizard.fillAmount = _reloadingTime;
+
+                if (_reloadingTime >= 1)
+                {
+                    _reloadingWizard = false;
+                    _reloadingTime = 0;
+                }
             }
+            else
+                CanvasReloadBarWizard.SetActive(false);
+
+            if (_throwing)
+            {
+                _timePowerCharge += Time.deltaTime / PowerChargeTime;
+
+                _powerMult = Mathf.Abs(Mathf.Sin(_timePowerCharge));
+                PowerBarFillKnight.fillAmount = _powerMult;
+
+                Aim();
+            }
+
+            if (_powerMult != 0)
+                CanvasPowerBarKnight.SetActive(true);
+            else
+                CanvasPowerBarKnight.SetActive(false);
         }
-
-        if(_throwing)
-        {
-            _timePowerCharge += Time.deltaTime / PowerChargeTime;
-
-            _powerMult = Mathf.Abs(Mathf.Sin(_timePowerCharge));
-            PowerBarFill.fillAmount = _powerMult;
-
-            Aim();
-        }
-
-        if (_powerMult != 0)
-            CanvasPowerBar.SetActive(true);
-        else
-            CanvasPowerBar.SetActive(false);
     }
 
     private void FixedUpdate()
     {
+        if(GameMaster.I.GameOver)
         Movement();
     }
 
@@ -199,6 +212,8 @@ public class CharaController : MonoBehaviour
         GameMaster.I.UIPotions(KnightPotions);
 
         _powerMult = 0;
+
+        StartCoroutine(ThrowCooldown());
     }
     #endregion
 
@@ -274,7 +289,7 @@ public class CharaController : MonoBehaviour
 
         _bombInertia = Mathf.Lerp(_bombInertia, 0, DecelerationWizard);
         if (_bombInertia < .01f && _bombInertia > -.01f)
-            _bombInertia = 0;        
+            _bombInertia = 0;
     }
 
     public void ApplyMovement()

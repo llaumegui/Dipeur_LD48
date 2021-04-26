@@ -28,7 +28,7 @@ public class UIKnightPotions : MonoBehaviour
     public void UpdateUI(int potions)
     {
         if (AmmoText != null)
-            AmmoText.text = "x " + potions;
+            AmmoText.text = potions.ToString();
 
         Debug.LogWarning(transform.childCount);
 
