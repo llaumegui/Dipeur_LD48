@@ -163,10 +163,10 @@ public class CharaController : MonoBehaviour
             DropBomb();
         }
 
-        if(Input.GetMouseButtonDown(0) && KnightPotions>0 && _canThrow)
+        if (Input.GetMouseButtonDown(0) && KnightPotions>0 && _canThrow)
         {
             _throwing = true;
-            ImportleSonLa.PlaySon("SorsLaPotion");
+            SoundManager.Instance.PlayAudio("sor_la_possion", default, 0);
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -229,11 +229,8 @@ public class CharaController : MonoBehaviour
 
         KnightPotions--;
         GameMaster.I.UIPotions(KnightPotions);
-
         _powerMult = 0;
-
-        ImportleSonLa.PlaySon("PotionWoosh");
-
+        SoundManager.Instance.PlayAudio("PotionWoosh", default, 0);
         StartCoroutine(ThrowCooldown());
     }
     #endregion

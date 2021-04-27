@@ -4,21 +4,6 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public GameObject EndPrefab;
-    bool _endPlaced;
-
-    [Header("Instances Placement")]
-    public float YPosSpawn;
-    public Transform PanningTransform;
-    public Transform PanningWallTransform;
-    public Transform StillTransform;
-
-    [Header("RandomPlacement")]
-    public Vector2 MinMaxPlacements;
-
-    GameMaster _gm;
-    int _id;
-
     public enum TypeOfPrefab
     {
         Mine,
@@ -30,11 +15,23 @@ public class LevelGenerator : MonoBehaviour
         Empty,
     }
 
+    public GameObject EndPrefab;
+    bool _endPlaced;
+    GameMaster _gm;
+    int _id;
     public int NbrOfInstances;
+
+    [Header("Instances Placement")]
+    public float YPosSpawn;
+    public Transform PanningTransform;
+    public Transform PanningWallTransform;
+    public Transform StillTransform;
+
+    [Header("RandomPlacement")]
+    public Vector2 MinMaxPlacements;
 
     [Header("Level Design")]
     public List<LevelData> LevelOrder;
-
     public List<LevelPrefab> AllPrefabs;
 
     private void Awake()
@@ -132,7 +129,7 @@ public class LevelGenerator : MonoBehaviour
         [Header("Values")]
         public TypeOfPrefab Type;
         public GameObject Instance;
-        [HideInInspector]public float XPosition;
+        [HideInInspector] public float XPosition;
         public Vector2 MinMaxXSpawn;
         public bool IsStill;
 
@@ -142,12 +139,9 @@ public class LevelGenerator : MonoBehaviour
 
         public virtual void SetVariables()
         {
-            if(!HasFixedPos)
+            if (!HasFixedPos)
             {
-                if (MinMaxXSpawn != Vector2.zero)
-                    XPosition = Random.Range(MinMaxXSpawn.x, MinMaxXSpawn.y);
-                else
-                    XPosition = 0;
+                XPosition = Random.Range(MinMaxXSpawn.x, MinMaxXSpawn.y);
             }
             else
             {

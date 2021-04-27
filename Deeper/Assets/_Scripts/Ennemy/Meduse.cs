@@ -32,7 +32,7 @@ public class Meduse : Ennemy
             float value = MovementCurve.Evaluate(_timeMove);
 
             if (value % 1 == 0)
-                ImportleSonLa.PlaySon("MeduseQuiBouge");
+                SoundManager.Instance.PlayAudio("MeduseQuiBouge", transform);
 
             _target.position += (Vector3)((MaxDirs * value)*MeduseSpeed);
         }

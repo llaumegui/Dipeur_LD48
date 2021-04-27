@@ -51,27 +51,30 @@ public class Potion : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent(out Ennemy script))
                 script.Death();
+
             Explosion();
             return;
         }
 
         if(collision.gameObject.tag == "Knight" && PotionPack)
         {
-            Controller.KnightPotions+=3;
+            if (PotionPack)
+            {
+                Controller.KnightPotions += 3;
 
-            if (Controller.KnightPotions > Controller.KnightMaxPotions)
-                Controller.KnightPotions = Controller.KnightMaxPotions;
+                if (Controller.KnightPotions > Controller.KnightMaxPotions)
+                    Controller.KnightPotions = Controller.KnightMaxPotions;
 
-            GameMaster.I.UIPotions(Controller.KnightPotions);
+                GameMaster.I.UIPotions(Controller.KnightPotions);
 
-            Destroy(gameObject, .05f);
-            return;
-        }
-
-        if(collision.gameObject.tag == "Knight" && !PotionPack)
-        {
-            Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
-            return;
+                Destroy(gameObject);
+                return;
+            }
+            else
+            {
+                Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
+                return;
+            }
         }
 
         Explosion();
@@ -79,14 +82,13 @@ public class Potion : MonoBehaviour
 
     void Explosion()
     {
-        ImportleSonLa.PlaySon("PotionExplosion");
-
-        GameObject instance = null;
+        SoundManager.Instance.PlayAudio("Explosion", transform);
         if (PotionPack)
-            instance = Instantiate(ExplosionFX, transform.position, Quaternion.identity);
+            Instantiate(ExplosionFX, transform.position, Quaternion.identity);
         else
-            instance = Instantiate(ExplosionFXSmall, transform.position, Quaternion.identity);
-        Destroy(gameObject, .05f);
+            Instantiate(ExplosionFXSmall, transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
     }
 
     private void OnBecameInvisible()

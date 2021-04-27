@@ -15,15 +15,14 @@ public class FeedbackKnight : MonoBehaviour
     }
 
     public AnimState State;
+    [SerializeField] SpriteRenderer knightSprite;
     [SerializeField] float hitSpeed = 0.1f;
-    [SerializeField] [ColorUsage(true, true)] Color hitColor = Color.white;
     bool _lock;
     float xInput;
     float yInput;
 
     [Header("Animation")]
     public AnimationManager2D AnimManager;
-    [SerializeField] SpriteRenderer knightSprite;
     int _antispam;
 
     [Header("Chains")]
@@ -31,11 +30,11 @@ public class FeedbackKnight : MonoBehaviour
     [SerializeField] Transform finalHinge;
     [SerializeField] Transform knightPod;
 
-    private void Hit()
+    public void Hit()
     {
         knightSprite?.material.DOComplete();
-        knightSprite?.material.DOColor(hitColor, "_GlowColor", hitSpeed/2);
-        knightSprite?.material.DOColor(Color.black, "_GlowColor", hitSpeed).SetDelay(hitSpeed/2);
+        knightSprite?.material.DOFloat(1, "_Emission", hitSpeed);
+        knightSprite?.material.DOFloat(0, "_Emission", hitSpeed / 2).SetDelay(hitSpeed);
     }
 
     private void Update()
@@ -43,16 +42,13 @@ public class FeedbackKnight : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal1P");
         yInput = Input.GetAxisRaw("Vertical1P");
         RopeAnim();
-
-        if (Input.GetKeyDown(KeyCode.E))
-            Hit();
-
         if (!_lock)
             PlayAnimations();
     }
 
     private void FixedUpdate()
     {
+
     }
 
     void RopeAnim()

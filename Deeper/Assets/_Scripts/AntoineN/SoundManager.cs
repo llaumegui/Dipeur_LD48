@@ -57,7 +57,7 @@ public class SoundManager : MonoBehaviour
         clips.Clear();
     }
 
-    public void PlayAudio(string name, bool destroy = true, float destructionDelay = default, float spatialBlend = 0, float soundRadius = default)
+    public void PlayAudio(string name, Transform target = null, float spatialBlend = 1, bool destroy = true, float destructionDelay = default)
     {
         if (soundsLibrary.TryGetValue(name, out Sound thisSound))
         {
@@ -66,7 +66,17 @@ public class SoundManager : MonoBehaviour
                 name = thisSound.clip.name
             };
 
-            sound.transform.parent = transform;
+            if (target)
+            {
+                sound.transform.position = target.position;
+                if (destroy)
+                    sound.transform.parent = transform;
+                else
+                    sound.transform.parent = target;
+            }
+            else
+                sound.transform.parent = transform;
+
             if (lastSource != null && lastSource.clip == thisSound.clip && lastSource.isPlaying)
                 Destroy(lastSource.gameObject);
 
@@ -76,7 +86,8 @@ public class SoundManager : MonoBehaviour
             lastSource.pitch = thisSound.pitch;
             lastSource.dopplerLevel = 0;
             lastSource.spatialBlend = spatialBlend;
-            lastSource.minDistance = soundRadius;
+            lastSource.minDistance = 3;
+            lastSource.maxDistance = 10;
             lastSource.Play();
 
             if (destroy)

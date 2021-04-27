@@ -35,12 +35,26 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Explosion();
-
         if (collision.gameObject.tag == "Ascenseur" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Knight")
         {
             GameMaster.I.Health -= Parent.GetDamage(collision.gameObject.tag);
+            switch (collision.gameObject.tag)
+            {
+                case "Ascenseur":
+                    GameMaster.I.PlayFeedBack(GameMaster.CharacterType.Ascenseur);
+                    break;
+                case "Player":
+                    GameMaster.I.PlayFeedBack(GameMaster.CharacterType.Wizard);
+                    break;
+                case "Knight":
+                    GameMaster.I.PlayFeedBack(GameMaster.CharacterType.Knight);
+                    break;
+                default:
+                    break;
+            }
         }
+
+        Explosion();
     }
 
     void Explosion()
@@ -49,10 +63,13 @@ public class Bullet : MonoBehaviour
         _rb.isKinematic = true;
         _rb.gravityScale = 0;
         _rb.velocity = Vector3.zero;
+        Destroy(gameObject);
+    }
 
-        GameObject instance = Instantiate(FXExplosion, transform.position, Quaternion.identity);
-        Destroy(instance, 1f);
-        Destroy(gameObject, .05f);
+    private void OnDestroy()
+    {
+        if (FXExplosion)
+            Instantiate(FXExplosion, transform.position, Quaternion.identity);
     }
 
     private void OnBecameInvisible()

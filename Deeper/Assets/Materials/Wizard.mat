@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Knight
+  m_Name: Wizard
   m_Shader: {fileID: 4800000, guid: 2d76aaf3f92386c4eb29ee525cd2b9ae, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 0
@@ -81,7 +81,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineWidth: 1
     - _Parallax: 0.02
-    - _Smoothness: 0
+    - _Smoothness: 0.89
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 
@@ -80,7 +82,6 @@ public class GameMaster : MonoBehaviour
 
     private void Awake()
     {
-        SetPresets();
         _mainCam = Camera.main;
         _camDefaultPos = _mainCam.transform.position;
         _ld = GetComponent<LevelGenerator>();
@@ -100,7 +101,7 @@ public class GameMaster : MonoBehaviour
     {
         Cursor.SetCursor(AimCursor, Vector2.zero, CursorMode.Auto);
 
-        if (TimeDecrease==0)
+        if (TimeDecrease == 0)
         {
             TimeDecrease = MinMaxTimeSpawnLevel.y/10;
         }
@@ -108,7 +109,10 @@ public class GameMaster : MonoBehaviour
 
     void Update()
     {
-        if(!GameOver)
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene(0);
+
+        if (!GameOver)
         {
             _timeDistance += Time.deltaTime;
             if (_timeDistance >= DistanceTick)
@@ -133,12 +137,12 @@ public class GameMaster : MonoBehaviour
             _panningWallTransform.position += Vector3.up * (Time.deltaTime / PanningWallTick);
         }
 
-        if(_score!=Score)
+        if (_score!=Score)
         {
             _score = Score;
             UIScore();
         }
-        if(_health != Health)
+        if (_health != Health)
         {
             _health = Health;
             UIHealth();
@@ -161,25 +165,21 @@ public class GameMaster : MonoBehaviour
 
     public void PlayFeedBack(CharacterType type)
     {
+        ScreenShake();
         switch(type)
         {
             case CharacterType.Knight:
-                ImportleSonLa.PlaySon("ChevalierQuiPrendUnCoup");
-                //faire briller ce perso jcrois
+                ControllerScript.KnightFeedback.Hit();
+                SoundManager.Instance.PlayAudio("pleg_nayte_ouch_1");
                 break;
             case CharacterType.Wizard:
-                ImportleSonLa.PlaySon("WizardQuiPrendUnCoup");
-                //faire briller ce perso jcrois
+                ControllerScript.WizardFeedback.Hit();
+                SoundManager.Instance.PlayAudio("pleg_wizar_ouch_1");
                 break;
             case CharacterType.Ascenseur:
-                ImportleSonLa.PlaySon("AscenseurQuiPrendUnCoup");
+                SoundManager.Instance.PlayAudio("AscenseurQuiPrendUnCoup");
                 break;
         }
-    }
-
-    void SetPresets()
-    {
-
     }
 
     public void EndGame(bool win = false)
@@ -226,24 +226,26 @@ public class GameMaster : MonoBehaviour
     IEnumerator Victory()
     {
         yield return new WaitForSeconds(1);
-
         CanvasEndGame.SetActive(true);
         VictoryScreen.SetActive(true);
     }
 
     public void ScreenShake()
     {
-        _shaking = true;
+        /*_shaking = true;
         float x = Random.Range(0, ScreenShakeIntensity);
         float y = Random.Range(0, ScreenShakeIntensity);
-        _mainCam.transform.position += new Vector3(x, y);
+        _mainCam.transform.position += new Vector3(x, y);*/
+
+        _mainCam.transform.DOComplete();
+        _mainCam.transform.DOShakePosition(1, 0.5f, 90);
     }
 
     IEnumerator Defeat()
     {
-        if(ExplosionsPos.Count>0)
+        if (ExplosionsPos.Count > 0)
         {
-            for(int i = 0;i<5;i++)
+            for (int i = 0;i < 5; i++)
             {
                 GameObject instance = Instantiate(ExplosionFX, ExplosionsPos[Random.Range(0, ExplosionsPos.Count)], Quaternion.identity);
                 Destroy(instance, 1);
@@ -251,10 +253,10 @@ public class GameMaster : MonoBehaviour
                 yield return new WaitForSeconds(.3f);
             }
         }
+
         yield return new WaitForSeconds(.5f);
         CanvasEndGame.SetActive(true);
         DefeatScreen.SetActive(true);
-
     }
 
     private void OnDrawGizmos()

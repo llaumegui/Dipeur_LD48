@@ -233,6 +233,7 @@ MonoBehaviour:
   spriteRender: {fileID: 0}
   hitSpeed: 0.1
   DeathFX: {fileID: 5068139493759209799, guid: 46ac0b98fdf1ee846b99df292e30235f, type: 3}
+  DeathSoundID: Zombrax_ki_meur
   Health: 2
   ScoreValue: 100
   MaxDirs: {x: 0, y: 0}

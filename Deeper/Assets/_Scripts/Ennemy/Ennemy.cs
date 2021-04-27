@@ -12,6 +12,7 @@ public abstract class Ennemy : MonoBehaviour
     [SerializeField] protected SpriteRenderer spriteRender;
     [SerializeField] protected float hitSpeed = 0.1f;
     public GameObject DeathFX;
+    [SerializeField] protected string DeathSoundID;
 
     [Header("Values")]
     public float Health;
@@ -112,16 +113,18 @@ public abstract class Ennemy : MonoBehaviour
 
     public virtual void Death(bool AddScore = false)
     {
-        GameObject instance = null;
-
-        if (DeathFX != null)
-            instance = Instantiate(DeathFX, transform.position, Quaternion.identity);
-
         if (AddScore)
             GameMaster.I.Score += ScoreValue;
 
-        Destroy(instance, .5f);
-        Destroy(gameObject, .025f);
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (DeathFX)
+            Instantiate(DeathFX, transform.position, Quaternion.identity);
+        if (!string.IsNullOrEmpty(DeathSoundID))
+            SoundManager.Instance.PlayAudio(DeathSoundID, transform);
     }
 
     public virtual void OnCollisionEnter2D(Collision2D collision)
@@ -129,7 +132,6 @@ public abstract class Ennemy : MonoBehaviour
         if (collision.gameObject.tag == "Ascenseur" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Knight")
         {
             GameMaster.I.Health -= GetDamage(collision.gameObject.tag);
-            GameMaster.I.ScreenShake();
 
             if (collision.gameObject.tag == "Knight")
                 GameMaster.I.PlayFeedBack(GameMaster.CharacterType.Knight);

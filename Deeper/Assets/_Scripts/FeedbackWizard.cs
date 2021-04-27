@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class FeedbackWizard : MonoBehaviour
@@ -15,6 +16,8 @@ public class FeedbackWizard : MonoBehaviour
     bool _lock;
     float xInput;
     float yInput;
+    [SerializeField] SpriteRenderer wizardSprite;
+    [SerializeField] float hitSpeed = 0.1f;
 
     [Header("Animation")]
     public AnimationManager2D AnimManager;
@@ -24,6 +27,13 @@ public class FeedbackWizard : MonoBehaviour
     {
         if (!_lock)
             PlayAnimations();
+    }
+
+    public void Hit()
+    {
+        wizardSprite?.material.DOComplete();
+        wizardSprite?.material.DOFloat(1, "_Emission", hitSpeed);
+        wizardSprite?.material.DOFloat(0, "_Emission", hitSpeed / 2).SetDelay(hitSpeed);
     }
 
     void PlayAnimations()

@@ -141,6 +141,7 @@ MonoBehaviour:
   spriteRender: {fileID: 0}
   hitSpeed: 0.1
   DeathFX: {fileID: 0}
+  DeathSoundID: meduz_ki_meur
   Health: 1
   ScoreValue: 10
   MaxDirs: {x: 0, y: 1}

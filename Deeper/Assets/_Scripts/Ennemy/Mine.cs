@@ -28,7 +28,7 @@ public class Mine : Ennemy
 
     public override void Death(bool AddScore = false)
     {
-        ImportleSonLa.PlaySon("Explosion");
+        SoundManager.Instance.PlayAudio("Explosion", transform);
         base.Death(AddScore);
     }
 }

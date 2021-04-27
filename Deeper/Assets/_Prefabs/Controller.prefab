@@ -766,7 +766,7 @@ GameObject:
   - component: {fileID: 2797403625425777383}
   - component: {fileID: 2797403625425777382}
   m_Layer: 0
-  m_Name: magicien
+  m_Name: WizardSprite
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -804,7 +804,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 49ecad89cdbab6041b56e9e4e4443bd1, type: 2}
+  - {fileID: 2100000, guid: ea9bb9cd99b07704e889d551c2f6e92b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -947,6 +947,8 @@ MonoBehaviour:
   PowerBarFillKnight: {fileID: 2797403625167679153}
   CanvasReloadBarWizard: {fileID: 2797403625084103320}
   ReloadBarFillWizard: {fileID: 2797403626281596725}
+  SonsMouvementKnight: {fileID: 0}
+  SonsMouvementWizard: {fileID: 0}
 --- !u!114 &6925987069328772479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,10 +962,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
-  hitSpeed: 0.1
-  hitColor: {r: 1, g: 1, b: 1, a: 1}
-  AnimManager: {fileID: 2797403625598158762}
   knightSprite: {fileID: 2797403624839536913}
+  hitSpeed: 0.1
+  AnimManager: {fileID: 2797403625598158762}
   chains:
   - {fileID: 5966614214754232090}
   - {fileID: 5966614215158505182}
@@ -1087,6 +1088,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
+  wizardSprite: {fileID: 2797403625425777383}
+  hitSpeed: 0.1
   AnimManager: {fileID: 2797403625598158760}
 --- !u!1 &2797403625651132040
 GameObject:

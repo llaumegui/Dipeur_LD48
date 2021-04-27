@@ -274,6 +274,7 @@ MonoBehaviour:
   spriteRender: {fileID: 0}
   hitSpeed: 0.1
   DeathFX: {fileID: 8530664683079431196, guid: c74a9041ec2f316499c0a398a2e07515, type: 3}
+  DeathSoundID: MoucheKimeur
   Health: 2
   ScoreValue: 20
   MaxDirs: {x: 2, y: 0}
@@ -360,8 +361,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 20
+  MinDistance: 3
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
