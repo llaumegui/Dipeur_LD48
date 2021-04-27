@@ -6,6 +6,11 @@ public class MurFriable : Ennemy
 {
     bool _enableOffset;
 
+    public override void OnCollisionEnter2D(Collision2D collision)
+    {
+        return;
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Knight")
@@ -14,7 +19,7 @@ public class MurFriable : Ennemy
 
     private void FixedUpdate()
     {
-        if(_enableOffset)
+        if (_enableOffset)
         {
             _enableOffset = false;
             GameMaster.I.OffsetWall = true;

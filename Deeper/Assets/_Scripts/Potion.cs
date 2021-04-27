@@ -5,15 +5,13 @@ using UnityEngine;
 public class Potion : MonoBehaviour
 {
     [HideInInspector] public CharaController Controller;
-
     Rigidbody2D _rb;
-
     public SpriteRenderer PotionRenderer;
     public Sprite PotionPackSprite;
     public GameObject ExplosionFX;
     public GameObject ExplosionFXSmall;
-
     public bool PotionPack;
+    [SerializeField] ParticleSystem trailFX;
 
     [Header("Rotation")]
     public Vector2 GravityDir;
@@ -41,13 +39,18 @@ public class Potion : MonoBehaviour
     //Potion Throw
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player" && PotionPack)
+        if (collision.gameObject.tag == "Player")
         {
-            Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
-            return;
+            if (PotionPack)
+            {
+                Physics2D.IgnoreCollision(collision.collider, collision.otherCollider);
+                return;
+            }
+            else
+                return;
         }
 
-        if(collision.gameObject.tag == "MurFriable" && PotionPack)
+        if (collision.gameObject.tag == "MurFriable" && PotionPack)
         {
             if (collision.gameObject.TryGetComponent(out Ennemy script))
                 script.Death();
@@ -56,7 +59,7 @@ public class Potion : MonoBehaviour
             return;
         }
 
-        if(collision.gameObject.tag == "Knight" && PotionPack)
+        if (collision.gameObject.tag == "Knight" && PotionPack)
         {
             if (PotionPack)
             {
@@ -82,7 +85,11 @@ public class Potion : MonoBehaviour
 
     void Explosion()
     {
+        trailFX.Stop();
+        trailFX.gameObject.AddComponent<SelfDestroyVFX>().destroyDelay = 2f;
+        trailFX.transform.parent = null;
         SoundManager.Instance.PlayAudio("Explosion", transform);
+
         if (PotionPack)
             Instantiate(ExplosionFX, transform.position, Quaternion.identity);
         else
