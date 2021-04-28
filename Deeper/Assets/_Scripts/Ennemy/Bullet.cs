@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [HideInInspector] public Ennemy Parent;
     public GameObject FXExplosion;
+    [SerializeField] ParticleSystem trailFX;
     Rigidbody2D _rb;
 
     [Header("Rotation")]
@@ -63,6 +64,9 @@ public class Bullet : MonoBehaviour
         _rb.isKinematic = true;
         _rb.gravityScale = 0;
         _rb.velocity = Vector3.zero;
+        trailFX.Stop();
+        trailFX.gameObject.AddComponent<SelfDestroyVFX>().destroyDelay = 2f;
+        trailFX.transform.parent = null;
         Destroy(gameObject);
     }
 

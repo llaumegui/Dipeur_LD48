@@ -963,6 +963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   State: 0
   knightSprite: {fileID: 2797403624839536913}
+  HitVFX: {fileID: 2736859644351688861, guid: 3be767d9d07b0a7459afb3284a268fda, type: 3}
   hitSpeed: 0.1
   AnimManager: {fileID: 2797403625598158762}
   chains:

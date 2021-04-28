@@ -15,11 +15,15 @@ public class FeedbackKnight : MonoBehaviour
     }
 
     public AnimState State;
-    [SerializeField] SpriteRenderer knightSprite;
-    [SerializeField] float hitSpeed = 0.1f;
     bool _lock;
     float xInput;
     float yInput;
+
+    [Header("Hit")]
+    [SerializeField] SpriteRenderer knightSprite;
+    [SerializeField] GameObject HitVFX;
+    [SerializeField] float freezeFrameDuration = 0.3f;
+    [SerializeField] float hitSpeed = 0.1f;
 
     [Header("Animation")]
     public AnimationManager2D AnimManager;
@@ -35,6 +39,9 @@ public class FeedbackKnight : MonoBehaviour
         knightSprite?.material.DOComplete();
         knightSprite?.material.DOFloat(1, "_Emission", hitSpeed);
         knightSprite?.material.DOFloat(0, "_Emission", hitSpeed / 2).SetDelay(hitSpeed);
+        Instantiate(HitVFX, knightPod.position, HitVFX.transform.rotation);
+        Time.timeScale = 0.05f;
+        DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1f, 0.00001f).SetUpdate(true).SetDelay(freezeFrameDuration);
     }
 
     private void Update()

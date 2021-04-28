@@ -140,7 +140,7 @@ MonoBehaviour:
   Target: {fileID: 7308848355147220393}
   spriteRender: {fileID: 0}
   hitSpeed: 0.1
-  DeathFX: {fileID: 0}
+  DeathFX: {fileID: 8731720730245949371, guid: d5c9d4d8b36558040a66d530db003342, type: 3}
   DeathSoundID: meduz_ki_meur
   Health: 1
   ScoreValue: 10

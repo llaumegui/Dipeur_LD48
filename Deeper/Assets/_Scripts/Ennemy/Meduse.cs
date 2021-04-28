@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Meduse : Ennemy
 {
-
     [Header("Meduse Movement")]
     public AnimationCurve MovementCurve;
     [Range(0,.1f)] public float MeduseSpeed;
-
-    public override void Update()
-    {
-        base.Update();
-    }
 
     public override void Move()
     {
@@ -32,7 +26,7 @@ public class Meduse : Ennemy
             float value = MovementCurve.Evaluate(_timeMove);
 
             if (value % 1 == 0)
-                SoundManager.Instance.PlayAudio("MeduseQuiBouge", transform);
+                SoundManager.Instance.PlayAudio("MeduseQuiBouge", _target);
 
             _target.position += (Vector3)((MaxDirs * value)*MeduseSpeed);
         }

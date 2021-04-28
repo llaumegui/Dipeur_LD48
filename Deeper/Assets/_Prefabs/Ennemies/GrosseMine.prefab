@@ -585,7 +585,8 @@ MonoBehaviour:
   Target: {fileID: 7562732953048580725}
   spriteRender: {fileID: 0}
   hitSpeed: 0.1
-  DeathFX: {fileID: 500606033391119219, guid: 096987000ba52bb4dad851aaf873daee, type: 3}
+  DeathFX: {fileID: 159623526417924146, guid: ca7f8b94387feeb4a9085ad805515ae5, type: 3}
+  DeathSoundID: 
   Health: 3
   ScoreValue: 50
   MaxDirs: {x: 0, y: 0.25}

@@ -1,52 +1,34 @@
 fileFormatVersion: 2
-guid: 84dcd9bc6b8c7cd4bbaae52af1c20b00
+guid: 004db9721e7b7c34d81204cb26ce413c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1440697656398221745
-    second: knight_damage_0
+      213: -8936565505451564226
+    second: "_D\xE9brisMines_spritesheet_0"
   - first:
-      213: -1111734143022811271
-    second: knight_damage_1
+      213: 1676153983695913244
+    second: "_D\xE9brisMines_spritesheet_1"
   - first:
-      213: 3407264980960195758
-    second: knight_damage_2
+      213: 6413919077019188619
+    second: "_D\xE9brisMines_spritesheet_2"
   - first:
-      213: 1886839431716050450
-    second: knight_damage_3
+      213: 1002810317056899373
+    second: "_D\xE9brisMines_spritesheet_3"
   - first:
-      213: 5906041897728908418
-    second: knight_damage_4
+      213: -1241266571608404847
+    second: "_D\xE9brisMines_spritesheet_4"
   - first:
-      213: -9018755541614172936
-    second: knight_damage_5
+      213: -3431468428178560495
+    second: "_D\xE9brisMines_spritesheet_5"
   - first:
-      213: -3347671478432261971
-    second: knight_damage_6
+      213: 3316355454121322858
+    second: "_D\xE9brisMines_spritesheet_6"
   - first:
-      213: -3031783622479816105
-    second: knight_damage_0
+      213: 507391133001816772
+    second: "_D\xE9brisMines_spritesheet_7"
   - first:
-      213: -1817117213000309565
-    second: knight_damage_1
-  - first:
-      213: 3753361418648146121
-    second: knight_damage_2
-  - first:
-      213: 6592520144122598398
-    second: knight_damage_3
-  - first:
-      213: 6448726196780571652
-    second: knight_damage_4
-  - first:
-      213: 254805443035138621
-    second: knight_damage_5
-  - first:
-      213: -9026145810471286773
-    second: knight_damage_6
-  - first:
-      213: -5898178886850046372
-    second: knight_damage_7
+      213: -1721295504646468995
+    second: "_D\xE9brisMines_spritesheet_8"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -128,17 +110,53 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knight_damage_0
+      name: "_D\xE9brisMines_spritesheet_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 743
-        height: 728
+        x: 5
+        y: 198
+        width: 62
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75a5e32cbd0fce5d0800000000000000
-      internalID: -3031783622479816105
+      spriteID: e33ec8f4501faf380800000000000000
+      internalID: -8936565505451564226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_1
+      name: "_D\xE9brisMines_spritesheet_1"
       rect:
         serializedVersion: 2
-        x: 743
-        y: 0
-        width: 743
-        height: 728
+        x: 77
+        y: 152
+        width: 110
+        height: 127
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c46ed3b58d48c6e0800000000000000
-      internalID: -1817117213000309565
+      spriteID: c110d03ea25e24710800000000000000
+      internalID: 1676153983695913244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_2
+      name: "_D\xE9brisMines_spritesheet_2"
       rect:
         serializedVersion: 2
-        x: 1486
-        y: 0
-        width: 743
-        height: 728
+        x: 197
+        y: 211
+        width: 51
+        height: 68
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c0dd28f25e961430800000000000000
-      internalID: 3753361418648146121
+      spriteID: b8d74db0b61d20950800000000000000
+      internalID: 6413919077019188619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_3
+      name: "_D\xE9brisMines_spritesheet_3"
       rect:
         serializedVersion: 2
-        x: 2229
-        y: 0
-        width: 743
-        height: 728
+        x: 258
+        y: 212
+        width: 56
+        height: 67
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,20 +227,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef3d80574265d7b50800000000000000
-      internalID: 6592520144122598398
+      spriteID: d29f5459ba2baed00800000000000000
+      internalID: 1002810317056899373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_4
+      name: "_D\xE9brisMines_spritesheet_4"
       rect:
         serializedVersion: 2
-        x: 2972
-        y: 0
-        width: 743
-        height: 728
+        x: 324
+        y: 186
+        width: 110
+        height: 93
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,20 +248,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40c9cd42f4a7e7950800000000000000
-      internalID: 6448726196780571652
+      spriteID: 19cc6bf21a226cee0800000000000000
+      internalID: -1241266571608404847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_5
+      name: "_D\xE9brisMines_spritesheet_5"
       rect:
         serializedVersion: 2
-        x: 3715
-        y: 0
-        width: 743
-        height: 728
+        x: 197
+        y: 121
+        width: 79
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -251,20 +269,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3a02fe4330498300800000000000000
-      internalID: 254805443035138621
+      spriteID: 11ae27035a9f060d0800000000000000
+      internalID: -3431468428178560495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_6
+      name: "_D\xE9brisMines_spritesheet_6"
       rect:
         serializedVersion: 2
-        x: 4458
-        y: 0
-        width: 743
-        height: 728
+        x: 286
+        y: 21
+        width: 132
+        height: 155
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,8 +290,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b088afb3530bcb280800000000000000
-      internalID: -9026145810471286773
+      spriteID: a69a4d7f6bf060e20800000000000000
+      internalID: 3316355454121322858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "_D\xE9brisMines_spritesheet_7"
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 32
+        width: 101
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca91c41c8d9a0700800000000000000
+      internalID: 507391133001816772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "_D\xE9brisMines_spritesheet_8"
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 5
+        width: 131
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a021cbbdabc18e0800000000000000
+      internalID: -1721295504646468995
       vertices: []
       indices: 
       edges: []

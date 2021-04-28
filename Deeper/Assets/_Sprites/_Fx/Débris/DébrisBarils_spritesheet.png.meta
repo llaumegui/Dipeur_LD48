@@ -1,52 +1,34 @@
 fileFormatVersion: 2
-guid: 84dcd9bc6b8c7cd4bbaae52af1c20b00
+guid: e938394769d0cff4c8dd212b3b28b5da
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1440697656398221745
-    second: knight_damage_0
+      213: 6607999073387029796
+    second: "D\xE9brisBarils_spritesheet_0"
   - first:
-      213: -1111734143022811271
-    second: knight_damage_1
+      213: 6554308371743467035
+    second: "D\xE9brisBarils_spritesheet_1"
   - first:
-      213: 3407264980960195758
-    second: knight_damage_2
+      213: 7518842595919496416
+    second: "D\xE9brisBarils_spritesheet_2"
   - first:
-      213: 1886839431716050450
-    second: knight_damage_3
+      213: 4188505109483671745
+    second: "D\xE9brisBarils_spritesheet_3"
   - first:
-      213: 5906041897728908418
-    second: knight_damage_4
+      213: 1770737162341379946
+    second: "D\xE9brisBarils_spritesheet_4"
   - first:
-      213: -9018755541614172936
-    second: knight_damage_5
+      213: 4313953648146171888
+    second: "D\xE9brisBarils_spritesheet_5"
   - first:
-      213: -3347671478432261971
-    second: knight_damage_6
+      213: 4426945122486608188
+    second: "D\xE9brisBarils_spritesheet_6"
   - first:
-      213: -3031783622479816105
-    second: knight_damage_0
+      213: -7973398585321735921
+    second: "D\xE9brisBarils_spritesheet_7"
   - first:
-      213: -1817117213000309565
-    second: knight_damage_1
-  - first:
-      213: 3753361418648146121
-    second: knight_damage_2
-  - first:
-      213: 6592520144122598398
-    second: knight_damage_3
-  - first:
-      213: 6448726196780571652
-    second: knight_damage_4
-  - first:
-      213: 254805443035138621
-    second: knight_damage_5
-  - first:
-      213: -9026145810471286773
-    second: knight_damage_6
-  - first:
-      213: -5898178886850046372
-    second: knight_damage_7
+      213: 6809216955881035364
+    second: "D\xE9brisBarils_spritesheet_8"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -128,17 +110,53 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: knight_damage_0
+      name: "D\xE9brisBarils_spritesheet_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 743
-        height: 728
+        x: 5
+        y: 332
+        width: 57
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75a5e32cbd0fce5d0800000000000000
-      internalID: -3031783622479816105
+      spriteID: 4252855852454bb50800000000000000
+      internalID: 6607999073387029796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_1
+      name: "D\xE9brisBarils_spritesheet_1"
       rect:
         serializedVersion: 2
-        x: 743
-        y: 0
-        width: 743
-        height: 728
+        x: 72
+        y: 292
+        width: 146
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c46ed3b58d48c6e0800000000000000
-      internalID: -1817117213000309565
+      spriteID: b166326ecb495fa50800000000000000
+      internalID: 6554308371743467035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_2
+      name: "D\xE9brisBarils_spritesheet_2"
       rect:
         serializedVersion: 2
-        x: 1486
-        y: 0
-        width: 743
-        height: 728
+        x: 281
+        y: 269
+        width: 48
+        height: 108
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c0dd28f25e961430800000000000000
-      internalID: 3753361418648146121
+      spriteID: 0e48bd3218b485860800000000000000
+      internalID: 7518842595919496416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_3
+      name: "D\xE9brisBarils_spritesheet_3"
       rect:
         serializedVersion: 2
-        x: 2229
-        y: 0
-        width: 743
-        height: 728
+        x: 5
+        y: 208
+        width: 111
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,20 +227,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef3d80574265d7b50800000000000000
-      internalID: 6592520144122598398
+      spriteID: 1c0dea6943f802a30800000000000000
+      internalID: 4188505109483671745
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_4
+      name: "D\xE9brisBarils_spritesheet_4"
       rect:
         serializedVersion: 2
-        x: 2972
-        y: 0
-        width: 743
-        height: 728
+        x: 126
+        y: 189
+        width: 72
+        height: 93
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,20 +248,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40c9cd42f4a7e7950800000000000000
-      internalID: 6448726196780571652
+      spriteID: a6fe0ff311ce29810800000000000000
+      internalID: 1770737162341379946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_5
+      name: "D\xE9brisBarils_spritesheet_5"
       rect:
         serializedVersion: 2
-        x: 3715
-        y: 0
-        width: 743
-        height: 728
+        x: 208
+        y: 209
+        width: 63
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -251,20 +269,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3a02fe4330498300800000000000000
-      internalID: 254805443035138621
+      spriteID: 0f7c0479cfd3edb30800000000000000
+      internalID: 4313953648146171888
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: knight_damage_6
+      name: "D\xE9brisBarils_spritesheet_6"
       rect:
         serializedVersion: 2
-        x: 4458
-        y: 0
-        width: 743
-        height: 728
+        x: 5
+        y: 98
+        width: 99
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,8 +290,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b088afb3530bcb280800000000000000
-      internalID: -9026145810471286773
+      spriteID: c3166f9422baf6d30800000000000000
+      internalID: 4426945122486608188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "D\xE9brisBarils_spritesheet_7"
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 96
+        width: 123
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f09bb454b3cc85190800000000000000
+      internalID: -7973398585321735921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "D\xE9brisBarils_spritesheet_8"
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 5
+        width: 111
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4661bdd9eb23f7e50800000000000000
+      internalID: 6809216955881035364
       vertices: []
       indices: 
       edges: []

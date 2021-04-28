@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Meduse
   m_Shader: {fileID: 4800000, guid: 2d76aaf3f92386c4eb29ee525cd2b9ae, type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA _ALPHAMASK_ON
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA _ALPHAMASK_ON _PULSEANIM1_ON _PULSEANIM_ON
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
@@ -51,6 +51,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: e4b72d6cc7703dc45903734a05a08945, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTex1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -64,6 +68,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture0:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -83,11 +91,18 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Keyword0: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0
+    - _OutlineWidth: 1
     - _Parallax: 0.02
+    - _PulseAnim: 1
+    - _PulseAnim1: 1
+    - _PulseSpeed: 4
+    - _PulseSpeed1: 8
+    - _RimThicknessX: 0.01
+    - _RimThicknessY: 0.01
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -101,5 +116,8 @@ Material:
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 13.552941, b: 23.968628, a: 1}
+    - _OutlineColor1: {r: 0, g: 0.8065434, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 0, g: 0.00041360295, b: 0.0007314645, a: 1}
+    - _RimOffset: {r: 0, g: 0.02, b: 0, a: 0}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}

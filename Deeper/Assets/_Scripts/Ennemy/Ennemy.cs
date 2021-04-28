@@ -122,9 +122,9 @@ public abstract class Ennemy : MonoBehaviour
     private void OnDestroy()
     {
         if (DeathFX)
-            Instantiate(DeathFX, transform.position, Quaternion.identity);
+            Instantiate(DeathFX, Target.transform.position, Quaternion.identity);
         if (!string.IsNullOrEmpty(DeathSoundID))
-            SoundManager.Instance.PlayAudio(DeathSoundID, transform);
+            SoundManager.Instance.PlayAudio(DeathSoundID, Target.transform);
     }
 
     public virtual void OnCollisionEnter2D(Collision2D collision)

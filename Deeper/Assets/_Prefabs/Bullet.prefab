@@ -49,8 +49,9 @@ MonoBehaviour:
   Parent: {fileID: 0}
   FXExplosion: {fileID: 5037756866557130165, guid: aaf79b82fa436924d89ec293506ce089,
     type: 3}
+  trailFX: {fileID: 363774835116685260}
   GravityDir: {x: 0, y: 1}
-  LerpIntensity: 0.05
+  LerpIntensity: 0.2
   Mult: 1
 --- !u!50 &4319484378137399673
 Rigidbody2D:
@@ -270,6 +271,12 @@ PrefabInstance:
 --- !u!4 &363774835116685261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5587859142158958907, guid: 2a88e403a6ada4f44a503a44d8e7ba55,
+    type: 3}
+  m_PrefabInstance: {fileID: 5224302018936895222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &363774835116685260 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5587859142158958906, guid: 2a88e403a6ada4f44a503a44d8e7ba55,
     type: 3}
   m_PrefabInstance: {fileID: 5224302018936895222}
   m_PrefabAsset: {fileID: 0}
