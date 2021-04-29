@@ -15,7 +15,6 @@ public class FeedbackWizard : MonoBehaviour
     public AnimState State;
     bool _lock;
     float xInput;
-    float yInput;
     [SerializeField] SpriteRenderer wizardSprite;
     [SerializeField] float hitSpeed = 0.1f;
 
@@ -38,8 +37,10 @@ public class FeedbackWizard : MonoBehaviour
 
     void PlayAnimations()
     {
-        xInput = Input.GetAxisRaw("Horizontal1P");
-        yInput = Input.GetAxisRaw("Vertical1P");
+        if (!GameMaster.I.Coop)
+            xInput = Input.GetAxisRaw("Horizontal1P");
+        else
+            xInput = Input.GetAxisRaw("Horizontal2P");
 
         //Stuned
         if (State != AnimState.Stun)
@@ -47,13 +48,13 @@ public class FeedbackWizard : MonoBehaviour
             //move
             if (State == AnimState.Moving)
             {
-                if ((yInput > 0 || xInput > 0) && _antispam != 1)
+                if ((xInput > 0) && _antispam != 1)
                 {
                     _antispam = 1;
                     AnimManager.PlayLoop(AnimationManager2D.States.Move, 0, true);
                 }
 
-                if ((yInput < 0 || xInput < 0) && _antispam != -1)
+                if ((xInput < 0) && _antispam != -1)
                 {
                     _antispam = -1;
                     AnimManager.PlayLoop(AnimationManager2D.States.Move);

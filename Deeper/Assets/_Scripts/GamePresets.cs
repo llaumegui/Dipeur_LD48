@@ -5,6 +5,6 @@ using UnityEngine;
 public static class GamePresets
 {
     public static bool InfiniteMode;
-    public static int Player;
-    public static bool Azerty;
+    public static bool Coop;
+    public static int HighScore;
 }

@@ -17,9 +17,9 @@ public class GameMaster : MonoBehaviour
     }
     #endregion
 
-    public bool InfiniteMode;
-    public Texture2D AimCursor;
+    [HideInInspector] public bool InfiniteMode;
     [HideInInspector] public bool GameOver;
+    [HideInInspector] public bool Coop;
 
     [Header("Controller")]
     public CharaController ControllerScript;
@@ -43,6 +43,7 @@ public class GameMaster : MonoBehaviour
     float _timeSpawnLevel;
     float _timeLevel;
     LevelGenerator _ld;
+    public GameObject LevelObject;
 
     [Header("LevelPanning")]
     [Range(1,2)]public float PanningTick;
@@ -53,12 +54,14 @@ public class GameMaster : MonoBehaviour
     [Header("UI")]
     public UIKnightPotions KnightPotionsScript;
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI HighScoreText;
     public Image HealthFillBar;
 
     [Header("End")]
     public GameObject CanvasEndGame;
     public GameObject VictoryScreen;
     public GameObject DefeatScreen;
+    public GameObject ScoreEndgame;
     bool _antispamEnd;
 
     [Header("Mise en Scène")]
@@ -99,12 +102,32 @@ public class GameMaster : MonoBehaviour
 
     private void Start()
     {
-        Cursor.SetCursor(AimCursor, Vector2.zero, CursorMode.Auto);
+        SetGamePresets();
+
 
         if (TimeDecrease == 0)
         {
             TimeDecrease = MinMaxTimeSpawnLevel.y/10;
         }
+
+        if (InfiniteMode)
+            ScoreText.gameObject.SetActive(true);
+        else
+            ScoreText.gameObject.SetActive(false);
+    }
+
+    private void SetGamePresets()
+    {
+        //Cursor.visible = false;
+        if (GamePresets.InfiniteMode)
+            InfiniteMode = true;
+        else
+            InfiniteMode = false;
+
+        if (GamePresets.Coop)
+            Coop = true;
+        else
+            Coop = false;
     }
 
     void Update()
@@ -140,6 +163,7 @@ public class GameMaster : MonoBehaviour
         if (_score!=Score)
         {
             _score = Score;
+            if(InfiniteMode)
             UIScore();
         }
         if (_health != Health)
@@ -178,6 +202,19 @@ public class GameMaster : MonoBehaviour
                 break;
             case CharacterType.Ascenseur:
                 SoundManager.Instance.PlayAudio("AscenseurQuiPrendUnCoup");
+                break;
+        }
+    }
+
+    public void Stun(CharacterType type, float time)
+    {
+        switch (type)
+        {
+            case CharacterType.Knight:
+                ControllerScript.TimeKnightStun = time;
+                break;
+            case CharacterType.Wizard:
+                ControllerScript.TimeWizardStun = time;
                 break;
         }
     }
@@ -227,16 +264,23 @@ public class GameMaster : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         CanvasEndGame.SetActive(true);
+        LevelObject.SetActive(false);
+
+        if (InfiniteMode)
+        {
+            ScoreEndgame.SetActive(true);
+            if (GamePresets.HighScore < Score)
+                GamePresets.HighScore = Score;
+            HighScoreText.text = "HIGHSCORE : "+GamePresets.HighScore;
+        }
+        else
+            ScoreEndgame.SetActive(false);
+
         VictoryScreen.SetActive(true);
     }
 
     public void ScreenShake()
     {
-        /*_shaking = true;
-        float x = Random.Range(0, ScreenShakeIntensity);
-        float y = Random.Range(0, ScreenShakeIntensity);
-        _mainCam.transform.position += new Vector3(x, y);*/
-
         _mainCam.transform.DOComplete();
         _mainCam.transform.DOShakePosition(1, 0.5f, 90);
     }
@@ -248,6 +292,7 @@ public class GameMaster : MonoBehaviour
             for (int i = 0;i < 5; i++)
             {
                 GameObject instance = Instantiate(ExplosionFX, ExplosionsPos[Random.Range(0, ExplosionsPos.Count)], Quaternion.identity);
+                SoundManager.Instance.PlayAudio("Explosion", transform);
                 Destroy(instance, 1);
                 ScreenShake();
                 yield return new WaitForSeconds(.3f);
@@ -256,6 +301,19 @@ public class GameMaster : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
         CanvasEndGame.SetActive(true);
+        LevelObject.SetActive(false);
+
+        if (InfiniteMode)
+        {
+            ScoreEndgame.SetActive(true);
+
+            if (GamePresets.HighScore < Score)
+                GamePresets.HighScore = Score;
+            HighScoreText.text = "HIGHSCORE : " + GamePresets.HighScore;
+        }
+        else
+            ScoreEndgame.SetActive(false);
+
         DefeatScreen.SetActive(true);
     }
 

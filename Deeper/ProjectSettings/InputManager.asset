@@ -25,10 +25,10 @@ InputManager:
     m_Name: Horizontal2P
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: q
-    positiveButton: 
-    altNegativeButton: a
-    altPositiveButton: d
+    negativeButton: d
+    positiveButton: a
+    altNegativeButton: 
+    altPositiveButton: q
     gravity: 3
     dead: 0.001
     sensitivity: 3

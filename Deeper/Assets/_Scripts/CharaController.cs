@@ -16,11 +16,16 @@ public class CharaController : MonoBehaviour
     public float WizardPosY = 3;
     public float KnightOffsetY;
     public Transform KnightCenter;
+    [HideInInspector] public float TimeKnightStun;
+    [HideInInspector] public float TimeWizardStun;
 
     Transform _knight;
     public Transform KnightPivot;
     Transform _wizard;
     bool _knightStun;
+    bool _wizardStun;
+    bool _antispamStunKnight;
+    bool _antispamStunWizard;
 
     [Header("Animation")]
     public FeedbackKnight KnightFeedback;
@@ -57,6 +62,7 @@ public class CharaController : MonoBehaviour
     public int KnightPotions;
 
     [Header("Throw")]
+    public Transform AimArrow;
     public float PowerChargeTime;
     public float MaxPower;
     float _powerMult;
@@ -91,6 +97,7 @@ public class CharaController : MonoBehaviour
 
     private void Start()
     {
+        AimArrow.gameObject.SetActive(false);
         StartCoroutine(ThrowCooldown());
 
         KnightPotions = 2;
@@ -133,7 +140,7 @@ public class CharaController : MonoBehaviour
             else
                 CanvasReloadBarWizard.SetActive(false);
 
-            if (_throwing)
+            if (_throwing && !_knightStun)
             {
                 _timePowerCharge += Time.deltaTime / PowerChargeTime;
 
@@ -141,6 +148,42 @@ public class CharaController : MonoBehaviour
                 PowerBarFillKnight.fillAmount = _powerMult;
 
                 Aim();
+            }
+
+            if(TimeKnightStun>0)
+            {
+                _knightStun = true;
+
+                if(!_antispamStunKnight)
+                {
+                    _antispamStunKnight = true;
+                    StartCoroutine(KnightFeedback.LockAnim(FeedbackKnight.AnimState.Stun, TimeKnightStun));
+                }
+
+                TimeKnightStun -= Time.deltaTime;
+            }
+            else
+            {
+                _antispamStunKnight = false;
+                _knightStun = false;
+            }
+
+            if (TimeWizardStun > 0)
+            {
+                _wizardStun = true;
+
+                if (!_antispamStunWizard)
+                {
+                    _antispamStunWizard = true;
+                    WizardFeedback.LockAnim(FeedbackWizard.AnimState.Stun, TimeKnightStun);
+                }
+
+                TimeWizardStun -= Time.deltaTime;
+            }
+            else
+            {
+                _antispamStunWizard = false;
+                _wizardStun = false;
             }
 
             if (_powerMult != 0)
@@ -158,22 +201,24 @@ public class CharaController : MonoBehaviour
 
     void Inputs()
     {
-        if (Input.GetKeyDown(DropBombKeyCode) && !_reloadingWizard)
+        if (Input.GetKeyDown(DropBombKeyCode) && !_reloadingWizard && !_wizardStun)
         {
             DropBomb();
         }
 
-        if (Input.GetMouseButtonDown(0) && KnightPotions>0 && _canThrow)
+        if (Input.GetMouseButtonDown(0) && KnightPotions>0 && _canThrow && !_knightStun)
         {
             _throwing = true;
+            AimArrow.gameObject.SetActive(true);
             SoundManager.Instance.PlayAudio("sor_la_possion", default, 0);
         }
         if (Input.GetMouseButtonUp(0))
         {
-            if(_throwing)
+            if(_throwing && !_knightStun)
             {
                 _throwing = false;
                 ThrowBomb();
+                AimArrow.gameObject.SetActive(false);
                 StartCoroutine(KnightFeedback.LockAnim(FeedbackKnight.AnimState.Throw,.2f));
             }
         }
@@ -209,6 +254,8 @@ public class CharaController : MonoBehaviour
         else
             KnightPivot.localScale = new Vector3(.5f, .5f, 1);
 
+        AimArrow.position = ((Vector2)KnightCenter.position) + ((_aimDir.normalized)*2.5f);
+
         //animAim
         KnightFeedback.State = FeedbackKnight.AnimState.Aim;
     }
@@ -240,10 +287,21 @@ public class CharaController : MonoBehaviour
         float xInput = 0;
         float yInput = 0;
 
-        xInput = Input.GetAxisRaw("Horizontal1P") * SpeedWizard;
+        if(!_wizardStun)
+        {
+            if (!GameMaster.I.Coop)
+                xInput = Input.GetAxisRaw("Horizontal1P") * SpeedWizard;
+            else
+                xInput = Input.GetAxisRaw("Horizontal2P") * SpeedWizard;
+        }
 
-        if (!_throwing)
-        yInput = Input.GetAxisRaw("Vertical1P") * SpeedKnight;
+        if (!_throwing && !_knightStun)
+        {
+            if (!GameMaster.I.Coop)
+                yInput = Input.GetAxisRaw("Vertical1P") * SpeedKnight;
+            else
+                yInput = Input.GetAxisRaw("Vertical2P") * SpeedKnight;
+        }
 
         if (xInput != 0)
             _xValue = Mathf.Lerp(_xValue, xInput, AccelerationWizard);

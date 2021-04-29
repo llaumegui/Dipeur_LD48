@@ -13,4 +13,20 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void SetInfiniteMode(bool activated)
+    {
+        if (activated)
+            GamePresets.InfiniteMode = true;
+        else
+            GamePresets.InfiniteMode = false;
+    }
+
+    public void SetCoopMode(bool activated)
+    {
+        if (activated)
+            GamePresets.Coop = true;
+        else
+            GamePresets.Coop = false;
+    }
 }

@@ -16,7 +16,6 @@ public class FeedbackKnight : MonoBehaviour
 
     public AnimState State;
     bool _lock;
-    float xInput;
     float yInput;
 
     [Header("Hit")]
@@ -46,8 +45,12 @@ public class FeedbackKnight : MonoBehaviour
 
     private void Update()
     {
-        xInput = Input.GetAxisRaw("Horizontal1P");
-        yInput = Input.GetAxisRaw("Vertical1P");
+        if (!GameMaster.I.Coop)
+            yInput = Input.GetAxisRaw("Vertical1P");
+        else
+            yInput = Input.GetAxisRaw("Vertical2P");
+
+
         RopeAnim();
         if (!_lock)
             PlayAnimations();
@@ -98,14 +101,14 @@ public class FeedbackKnight : MonoBehaviour
                     //move
                     if (State==AnimState.Moving)
                     {
-                        if ((yInput > 0 || xInput>0) && _antispam !=1)
+                        if ((yInput > 0) && _antispam !=1)
                         {
                             _antispam = 1;
-                            Debug.Log("ALLO");
+                            //Debug.Log("ALLO");
                             AnimManager.PlayLoop(AnimationManager2D.States.Move, 0, true);
                         }
 
-                        if ((yInput < 0 || xInput<0) && _antispam != -1)
+                        if ((yInput < 0) && _antispam != -1)
                         {
                             _antispam = -1;
                             AnimManager.PlayLoop(AnimationManager2D.States.Move);

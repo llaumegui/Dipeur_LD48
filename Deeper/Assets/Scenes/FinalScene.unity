@@ -255,6 +255,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 616910638, guid: 59675abe701beb94f878e3a4bd76140c, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 3505117801372151786}
+    - target: {fileID: 1547708557775923604, guid: 59675abe701beb94f878e3a4bd76140c,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 3505117801372151786}
     - target: {fileID: 1547708558439723610, guid: 59675abe701beb94f878e3a4bd76140c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -324,6 +333,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3505117801511923776, guid: 55e0f75092bd2a6468dc62d96705a751,
+        type: 3}
+      propertyPath: weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3505117801511923776, guid: 55e0f75092bd2a6468dc62d96705a751,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3505117801511923777, guid: 55e0f75092bd2a6468dc62d96705a751,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -391,3 +410,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55e0f75092bd2a6468dc62d96705a751, type: 3}
+--- !u!20 &3505117801372151786 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3505117801511923790, guid: 55e0f75092bd2a6468dc62d96705a751,
+    type: 3}
+  m_PrefabInstance: {fileID: 3505117801372151785}
+  m_PrefabAsset: {fileID: 0}

@@ -20,6 +20,7 @@ public class LevelGenerator : MonoBehaviour
     GameMaster _gm;
     int _id;
     public int NbrOfInstances;
+    public float OffsetInstances = 1.5f;
 
     [Header("Instances Placement")]
     public float YPosSpawn;
@@ -37,6 +38,13 @@ public class LevelGenerator : MonoBehaviour
     private void Awake()
     {
         _gm = GetComponent<GameMaster>();
+    }
+
+    private void Start()
+    {
+        //changeSeed
+        Random.InitState(Time.frameCount);
+        Debug.Log(Time.frameCount);
     }
 
     public void TriggerSpawn()
@@ -97,6 +105,8 @@ public class LevelGenerator : MonoBehaviour
         if (prefab.Type == TypeOfPrefab.Plank || prefab.Type == TypeOfPrefab.Zombie)
             nbr = 1;
 
+        float[] pos = new float[nbr];
+
         for(int i =0;i<nbr;i++)
         {
             GameObject instance = Instantiate(prefab.Instance);
@@ -117,6 +127,25 @@ public class LevelGenerator : MonoBehaviour
 
             if (prefab.Type == TypeOfPrefab.Plank || prefab.Type == TypeOfPrefab.Zombie)
                 t.parent = PanningWallTransform;
+
+            if(i>0)
+            {
+                for(int j = i-1;j>=0;j--)
+                {
+                    float minRange = pos[j] - OffsetInstances;
+                    float maxRange = pos[j] + OffsetInstances;
+                    if(pos[i]>=minRange && pos[i]<=maxRange)
+                    {
+                        pos[i] = -100;
+                        Destroy(instance);
+                        return;
+                    }
+
+                }
+            }
+
+            pos[i] = x;
+
 
             t.position = new Vector2(x, YPosSpawn);
         }

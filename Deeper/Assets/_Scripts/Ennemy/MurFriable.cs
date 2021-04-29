@@ -8,7 +8,13 @@ public class MurFriable : Ennemy
 
     public override void OnCollisionEnter2D(Collision2D collision)
     {
-        return;
+        if (collision.gameObject.tag == "Ascenseur")
+        {
+            GameMaster.I.PlayFeedBack(GameMaster.CharacterType.Ascenseur);
+            Death();
+        }
+        else
+            return;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -26,5 +32,11 @@ public class MurFriable : Ennemy
         }
         else
             GameMaster.I.OffsetWall = false;
+    }
+
+    public override void Death(bool AddScore = false)
+    {
+        SoundManager.Instance.PlayAudio("Explosion", transform);
+        base.Death(AddScore);
     }
 }

@@ -33,6 +33,8 @@ public abstract class Ennemy : MonoBehaviour
         Empty,
     }
 
+    float _timeStun;
+
     [System.Serializable]
     public class DamageData
     {
@@ -87,6 +89,7 @@ public abstract class Ennemy : MonoBehaviour
 
     public float GetDamage(string tag)
     {
+        _timeStun = 0;
         PlayerType type = PlayerType.Empty;
 
         if (tag == "Ascenseur")
@@ -101,6 +104,11 @@ public abstract class Ennemy : MonoBehaviour
             {
                 if(data.Type == type)
                 {
+                    if (data.TimeStun > 0)
+                    {
+                        _timeStun = data.TimeStun;
+                    }
+
                     return data.Damage;
                 }
             }
@@ -133,10 +141,18 @@ public abstract class Ennemy : MonoBehaviour
         {
             GameMaster.I.Health -= GetDamage(collision.gameObject.tag);
             if (collision.gameObject.tag == "Knight")
+            {
                 GameMaster.I.PlayFeedBack(GameMaster.CharacterType.Knight);
+                if(_timeStun>0)
+                    GameMaster.I.Stun(GameMaster.CharacterType.Knight, _timeStun);
+            }
 
             if (collision.gameObject.tag == "Player")
+            {
                 GameMaster.I.PlayFeedBack(GameMaster.CharacterType.Wizard);
+                if (_timeStun > 0)
+                    GameMaster.I.Stun(GameMaster.CharacterType.Wizard, _timeStun);
+            }
 
             if (collision.gameObject.tag == "Ascenseur")
             {
